@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftQRCodeScanner
 
 class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemContent {
     
@@ -29,6 +30,21 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         return button
     }()
     
+    lazy var scanButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "qrcode.viewfinder"), for: .normal)
+        button.addTarget(self, action: #selector(handleScan), for: .touchUpInside)
+        return button
+    }()
+    
+    let avatarView: JazziconImageView = {
+        let view = JazziconImageView()
+        view.layer.cornerRadius = 40
+        view.clipsToBounds = true
+        return view
+    }()
+
+    
     lazy var tableView: BalanceViewTableView = {
         let tableView = BalanceViewTableView(frame: .zero, style: .grouped)
         tableView.controller = self
@@ -37,23 +53,65 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     }()
     
     override func setUpViews() {
+        
         view.addSubview(tableView)
         view.addConstts(format: "H:|[v0]|", views: tableView)
-        view.addConstts(format: "V:|-84-[v0]|", views: tableView)
+        view.addConstts(format: "V:|-184-[v0]|", views: tableView)
         
         view.addSubview(naviView)
         view.addConstts(format: "H:|[v0]|", views: naviView)
         view.addConstts(format: "V:|[v0(84)]", views: naviView)
         
+        view.addSubview(avatarView)
+        view.addConstts(format: "H:[v0(80)]", views: avatarView)
+        view.addConstts(format: "V:[v0(80)]", views: avatarView)
+        avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        avatarView.topAnchor.constraint(equalTo: naviView.bottomAnchor, constant: 10).isActive = true
+        
         naviView.addSubview(menu)
         naviView.addConstts(format: "H:|-10-[v0]", views: menu)
         naviView.addConstts(format: "V:[v0]|", views: menu)
+        
+        naviView.addSubview(scanButton)
+        naviView.addConstts(format: "H:[v0]-15-|", views: scanButton)
+        naviView.addConstts(format: "V:[v0]|", views: scanButton)
     }
     
     // MARK: - Method
     
     @objc func handleSide() {
         showSideMenu()
+    }
+    
+    @objc func handleScan() {
+        let scanner = QRCodeScannerController()
+        scanner.delegate = self
+        self.present(scanner, animated: true, completion: nil)
+    }
+    
+    func handleAddress(_ result: String) {
+        let hexSeed = result.suffix(8)
+        guard let decimalSeed = Int(hexSeed, radix: 16) else { return }
+        
+        avatarView.seed = UInt32(decimalSeed)
+    }
+    
+}
+
+extension BalanceViewController: QRScannerCodeDelegate {
+    
+    func qrScanner(_ controller: UIViewController, didScanQRCodeWithResult result: String) {
+        print(result)
+        
+        handleAddress(result)
+    }
+    
+    func qrScanner(_ controller: UIViewController, didFailWithError error: SwiftQRCodeScanner.QRCodeError) {
+        print(error.localizedDescription)
+    }
+    
+    func qrScannerDidCancel(_ controller: UIViewController) {
+        print(#function)
     }
     
 }
