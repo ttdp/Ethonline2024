@@ -25,7 +25,7 @@ class AppCoordinator {
     }
     
     func start() {
-        MainCoordinator(window: window).start()
+        HostCoordinator(window: window).start()
     }
     
 }
