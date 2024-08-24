@@ -16,6 +16,10 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     lazy var naviView: BaseView = {
         let view = BaseView()
         view.backgroundColor = .lightGray
@@ -43,7 +47,18 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         view.clipsToBounds = true
         return view
     }()
+    
+    let balanceLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Ethereum: "
+        return view
+    }()
 
+    let balanceValue: UILabel = {
+        let view = UILabel()
+        view.text = "0 ETH"
+        return view
+    }()
     
     lazy var tableView: BalanceViewTableView = {
         let tableView = BalanceViewTableView(frame: .zero, style: .grouped)
@@ -53,10 +68,9 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     }()
     
     override func setUpViews() {
-        
         view.addSubview(tableView)
         view.addConstts(format: "H:|[v0]|", views: tableView)
-        view.addConstts(format: "V:|-184-[v0]|", views: tableView)
+        view.addConstts(format: "V:|-284-[v0]|", views: tableView)
         
         view.addSubview(naviView)
         view.addConstts(format: "H:|[v0]|", views: naviView)
@@ -66,7 +80,13 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         view.addConstts(format: "H:[v0(80)]", views: avatarView)
         view.addConstts(format: "V:[v0(80)]", views: avatarView)
         avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        avatarView.topAnchor.constraint(equalTo: naviView.bottomAnchor, constant: 10).isActive = true
+        avatarView.topAnchor.constraint(equalTo: naviView.bottomAnchor, constant: 20).isActive = true
+        
+        view.addSubview(balanceLabel)
+        view.addSubview(balanceValue)
+        view.addConstts(format: "H:|-15-[v0]-10-[v1]", views: balanceLabel, balanceValue)
+        balanceLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 20).isActive = true
+        balanceValue.centerYAnchor.constraint(equalTo: balanceLabel.centerYAnchor).isActive = true
         
         naviView.addSubview(menu)
         naviView.addConstts(format: "H:|-10-[v0]", views: menu)
@@ -94,6 +114,10 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         guard let decimalSeed = Int(hexSeed, radix: 16) else { return }
         
         avatarView.seed = UInt32(decimalSeed)
+        
+        viewModel.loadBalance(for: "0x8FFE4DD9d2B6494F6173C4417Ad22134868987DE")
+        
+        viewModel.loadNFTs(for: "0x8FFE4DD9d2B6494F6173C4417Ad22134868987DE")
     }
     
 }

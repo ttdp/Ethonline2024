@@ -14,6 +14,10 @@
 		2726EAF52C79F362001ACFE2 /* JazzColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF42C79F362001ACFE2 /* JazzColors.swift */; };
 		2726EAF72C79F3A9001ACFE2 /* Squall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF62C79F3A9001ACFE2 /* Squall.swift */; };
 		2726EAF92C79F412001ACFE2 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF82C79F412001ACFE2 /* Mersenne.swift */; };
+		2726EAFC2C7A0B86001ACFE2 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 2726EAFB2C7A0B86001ACFE2 /* web3swift */; };
+		2726EB022C7A0F27001ACFE2 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EB012C7A0F27001ACFE2 /* Paths.swift */; };
+		2726EB052C7A251D001ACFE2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2726EB042C7A251D001ACFE2 /* Alamofire */; };
+		2726EB082C7A26A7001ACFE2 /* NFTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EB072C7A26A7001ACFE2 /* NFTModel.swift */; };
 		506A73602C79403800A62FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A735F2C79403800A62FC7 /* AppDelegate.swift */; };
 		506A73622C79403800A62FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73612C79403800A62FC7 /* SceneDelegate.swift */; };
 		506A73642C79403800A62FC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73632C79403800A62FC7 /* ViewController.swift */; };
@@ -85,6 +89,8 @@
 		2726EAF42C79F362001ACFE2 /* JazzColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JazzColors.swift; sourceTree = "<group>"; };
 		2726EAF62C79F3A9001ACFE2 /* Squall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squall.swift; sourceTree = "<group>"; };
 		2726EAF82C79F412001ACFE2 /* Mersenne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mersenne.swift; sourceTree = "<group>"; };
+		2726EB012C7A0F27001ACFE2 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
+		2726EB072C7A26A7001ACFE2 /* NFTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTModel.swift; sourceTree = "<group>"; };
 		506A735C2C79403800A62FC7 /* Wallet-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallet-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A735F2C79403800A62FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506A73612C79403800A62FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +153,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2726EB052C7A251D001ACFE2 /* Alamofire in Frameworks */,
 				2726EAEE2C79E5FC001ACFE2 /* SwiftQRCodeScanner in Frameworks */,
+				2726EAFC2C7A0B86001ACFE2 /* web3swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +179,14 @@
 				2726EAF82C79F412001ACFE2 /* Mersenne.swift */,
 			);
 			path = Jazzicon;
+			sourceTree = "<group>";
+		};
+		2726EB062C7A269A001ACFE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2726EB072C7A26A7001ACFE2 /* NFTModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		506A73532C79403800A62FC7 = {
@@ -200,6 +216,7 @@
 				506A73AD2C7944ED00A62FC7 /* Views */,
 				506A73A72C7944A000A62FC7 /* ViewModels */,
 				506A73AA2C7944C300A62FC7 /* DateModels */,
+				2726EB062C7A269A001ACFE2 /* Models */,
 				506A73D12C794D4A00A62FC7 /* Animation */,
 				506A73B42C7945AC00A62FC7 /* Contants */,
 				2726EAEF2C79F291001ACFE2 /* Jazzicon */,
@@ -291,9 +308,10 @@
 		506A73B42C7945AC00A62FC7 /* Contants */ = {
 			isa = PBXGroup;
 			children = (
-				506A73B52C7945BE00A62FC7 /* Images.swift */,
+				2726EB012C7A0F27001ACFE2 /* Paths.swift */,
 				506A73B72C7945EB00A62FC7 /* Fonts.swift */,
 				506A73BC2C7946A700A62FC7 /* Colors.swift */,
+				506A73B52C7945BE00A62FC7 /* Images.swift */,
 			);
 			path = Contants;
 			sourceTree = "<group>";
@@ -390,6 +408,8 @@
 			name = "Wallet-iOS";
 			packageProductDependencies = (
 				2726EAED2C79E5FC001ACFE2 /* SwiftQRCodeScanner */,
+				2726EAFB2C7A0B86001ACFE2 /* web3swift */,
+				2726EB042C7A251D001ACFE2 /* Alamofire */,
 			);
 			productName = "Wallet-iOS";
 			productReference = 506A735C2C79403800A62FC7 /* Wallet-iOS.app */;
@@ -443,6 +463,8 @@
 			mainGroup = 506A73532C79403800A62FC7;
 			packageReferences = (
 				2726EAEC2C79E5FC001ACFE2 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */,
+				2726EAFA2C7A0B86001ACFE2 /* XCRemoteSwiftPackageReference "web3swift" */,
+				2726EB032C7A251D001ACFE2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 506A735D2C79403800A62FC7 /* Products */;
 			projectDirPath = "";
@@ -508,6 +530,7 @@
 				506A73F42C7952FA00A62FC7 /* HostViewController.swift in Sources */,
 				506A73982C79435700A62FC7 /* Reusable+Extension.swift in Sources */,
 				506A73AF2C7944FC00A62FC7 /* BalanceViewController.swift in Sources */,
+				2726EB082C7A26A7001ACFE2 /* NFTModel.swift in Sources */,
 				506A73922C7942C500A62FC7 /* UIView+Extension.swift in Sources */,
 				2726EAF72C79F3A9001ACFE2 /* Squall.swift in Sources */,
 				506A73F02C79526900A62FC7 /* TxCoordinator.swift in Sources */,
@@ -525,6 +548,7 @@
 				506A73CA2C794BF900A62FC7 /* NFTViewController.swift in Sources */,
 				506A73F62C7953C000A62FC7 /* HostViewModel.swift in Sources */,
 				506A739E2C7943AF00A62FC7 /* UIViewController+Extension.swift in Sources */,
+				2726EB022C7A0F27001ACFE2 /* Paths.swift in Sources */,
 				2726EAF12C79F325001ACFE2 /* JazziconImageView.swift in Sources */,
 				506A73E32C794F7F00A62FC7 /* SideMenuViewModel.swift in Sources */,
 				506A73DA2C794DC900A62FC7 /* MenuViewController.swift in Sources */,
@@ -699,7 +723,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -727,7 +751,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -820,6 +844,22 @@
 				minimumVersion = 1.16.0;
 			};
 		};
+		2726EAFA2C7A0B86001ACFE2 /* XCRemoteSwiftPackageReference "web3swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/web3swift-team/web3swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.1;
+			};
+		};
+		2726EB032C7A251D001ACFE2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -827,6 +867,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2726EAEC2C79E5FC001ACFE2 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */;
 			productName = SwiftQRCodeScanner;
+		};
+		2726EAFB2C7A0B86001ACFE2 /* web3swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2726EAFA2C7A0B86001ACFE2 /* XCRemoteSwiftPackageReference "web3swift" */;
+			productName = web3swift;
+		};
+		2726EB042C7A251D001ACFE2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2726EB032C7A251D001ACFE2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
