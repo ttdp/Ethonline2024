@@ -27,6 +27,10 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         viewModel.getArtibrumSepholia(for: address)
         viewModel.getOptimismMainnet(for: address)
         viewModel.getOptimismSepholia(for: address)
+        
+        viewModel.getEthereumPrice()
+        viewModel.getArbitrumPrice()
+        viewModel.getOptimismPrice()
     }
     
     lazy var naviView: BaseView = {
@@ -70,7 +74,7 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     }()
     
     lazy var tableView: BalanceViewTableView = {
-        let tableView = BalanceViewTableView(frame: .zero, style: .grouped)
+        let tableView = BalanceViewTableView(frame: .zero, style: .insetGrouped)
         tableView.controller = self
         tableView.viewModel = self.viewModel
         return tableView
@@ -183,11 +187,15 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel.balances.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusable(at: indexPath) as BalanceViewTableCell
+        let token = viewModel.balances[indexPath.row]
+        
+        cell.tokenIcon.image = token.icon
+        cell.tokenName.text = token.name
         return cell
     }
     
@@ -203,16 +211,40 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
 
 class BalanceViewTableCell: BaseTableViewCell {
     
-    let blankView: BlankView = {
-        let view = BlankView()
+    let layerView: BaseView = {
+        let view = BaseView()
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    let tokenIcon: UIImageView = {
+        let view = UIImageView()
+        view.layer.cornerRadius = 30
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let tokenName: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.primaryMedium
+        view.textColor = Colors.label_primary
         return view
     }()
     
     override func setUpViews() {
-        contentView.addSubview(blankView)
-        contentView.addConstts(format: "H:|[v0]|", views: blankView)
-        let size = Int(Screen.imageHeightPadding_15 * 2 / 3)
-        contentView.addConstts(format: "V:|[v0(\(size))]|", views: blankView)
+        backgroundColor = Colors.groupedBackground_primary
+        
+        contentView.addSubview(layerView)
+        contentView.addConstts(format: "H:|[v0]|", views: layerView)
+        contentView.addConstts(format: "V:|-20-[v0(80)]|", views: layerView)
+        
+        contentView.addSubview(tokenIcon)
+        contentView.addConstts(format: "H:|-10-[v0(60)]", views: tokenIcon)
+        contentView.addConstts(format: "V:|-30-[v0(60)]-10-|", views: tokenIcon)
+        
+        contentView.addSubview(tokenName)
+        contentView.addConstts(format: "H:|-80-[v0]", views: tokenName)
+        contentView.addConstts(format: "V:|-30-[v0]", views: tokenName)
     }
     
 }

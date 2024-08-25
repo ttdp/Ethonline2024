@@ -5,7 +5,7 @@
 //  Created by Tian Tong on 2024/8/24.
 //
 
-import Foundation
+import UIKit
 import web3swift
 import Web3Core
 import BigInt
@@ -14,14 +14,67 @@ protocol ViewModelProtocol {}
 
 protocol BalanceViewModelCoordinator {}
 
+enum TokenType: String {
+    case ethereum
+    case arbitrum
+    case optimism
+    case ethereumSepholia
+    case arbitrumSepholia
+    case optimismSepholia
+}
+
+struct CryptoCurrency {
+    
+    init(type: TokenType, name: String, icon: UIImage) {
+        self.type = type
+        self.name = name
+        self.icon = icon
+    }
+    
+    let type: TokenType
+    let name: String
+    let icon: UIImage
+    var price: String?
+    var change: String?
+    var balance: String?
+    var value: String?
+}
+
 class BalanceViewModel: ViewModelProtocol {
     
     var coordinator: BalanceViewModelCoordinator?
     
     let dataModel: BalanceDataModelProtocol
     
+    let balances = [
+        CryptoCurrency(type: .ethereum, name: "Ethereum", icon: Images.ETH),
+        CryptoCurrency(type: .ethereumSepholia, name: "Ethereum Sepholia", icon: Images.ETH),
+        CryptoCurrency(type: .arbitrum, name: "Arbitrum", icon: Images.ARB),
+        CryptoCurrency(type: .arbitrumSepholia, name: "Arbitrum Sepholia", icon: Images.ARB),
+        CryptoCurrency(type: .optimism, name: "Optimism", icon: Images.OPT),
+        CryptoCurrency(type: .optimismSepholia, name: "Optimism Sepholia", icon: Images.OPT),
+    ]
+    
     init(dataModel: BalanceDataModelProtocol = BalanceDataModel()) {
         self.dataModel = dataModel
+    }
+    
+    func getEthereumPrice() {
+        dataModel.fetchEthereumPrice { currency in
+            print("Currency Name: \(currency.name), Price: \(currency.price), Change: \(currency.change_15m)")
+        }
+    }
+    
+    func getArbitrumPrice() {
+        dataModel.fetchArbitrumPrice { currency in
+            print("Currency Name: \(currency.name), Price: \(currency.price), Change: \(currency.change_15m)")
+        }
+    }
+    
+    func getOptimismPrice() {
+        dataModel.fetchOptimismPrice { currency in
+            print("Currency Name: \(currency.name), Price: \(currency.price), Change: \(currency.change_15m)")
+        }
     }
     
     func getEthereumMainnet(for address: String) {

@@ -122,8 +122,8 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
 
 class NFTViewTableCell: BaseTableViewCell {
     
-    let blankView: BlankView = {
-        let view = BlankView()
+    let blankView: BaseView = {
+        let view = BaseView()
         return view
     }()
     

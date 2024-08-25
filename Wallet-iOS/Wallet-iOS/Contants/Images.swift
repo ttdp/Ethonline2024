@@ -16,4 +16,10 @@ struct Images {
     static let toast_success = UIImage(named: "toast_success")
     static let toast_warning = UIImage(named: "toast_warning")
     
+    // MARK: - Currency
+    
+    static let ETH = UIImage(named: "ETH")!
+    static let ARB = UIImage(named: "ARB")!
+    static let OPT = UIImage(named: "OPT")!
+    
 }

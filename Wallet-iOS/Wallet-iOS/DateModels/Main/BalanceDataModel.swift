@@ -6,12 +6,13 @@
 //
 
 import Foundation
-import web3swift
-import Web3Core
 import BigInt
 import Alamofire
 
 protocol BalanceDataModelProtocol {
+    func fetchEthereumPrice(completion: @escaping (CurrencyPrice) -> Void)
+    func fetchArbitrumPrice(completion: @escaping (CurrencyPrice) -> Void)
+    func fetchOptimismPrice(completion: @escaping (CurrencyPrice) -> Void)
     func fetchEthereumMainnet(address: String, completion: @escaping (String) -> Void)
     func fetchEthereumSepolia(address: String, completion: @escaping (String) -> Void)
     func fetchArbitrumMainnet(address: String, completion: @escaping (String) -> Void)
@@ -22,6 +23,33 @@ protocol BalanceDataModelProtocol {
 }
 
 class BalanceDataModel: BalanceDataModelProtocol {
+    
+    func fetchEthereumPrice(completion: @escaping (CurrencyPrice) -> Void) {
+        fetchCurrencyPrice(path: Paths.EthereumPrice, completion: completion)
+    }
+    
+    func fetchArbitrumPrice(completion: @escaping (CurrencyPrice) -> Void) {
+        fetchCurrencyPrice(path: Paths.ArbitrumPrice, completion: completion)
+    }
+    
+    func fetchOptimismPrice(completion: @escaping (CurrencyPrice) -> Void) {
+        fetchCurrencyPrice(path: Paths.OptimismPrice, completion: completion)
+    }
+    
+    private func fetchCurrencyPrice(path: String, completion: @escaping (CurrencyPrice) -> Void) {
+        AF.request(path, method: .get).responseDecodable(of: CoinPaprikaResponse.self) { response in
+            switch response.result {
+            case .success(let coinPaprikaResponse):
+                let currencyName = coinPaprikaResponse.name
+                let currencyPrice = coinPaprikaResponse.quotes.USD.price
+                let currencyChange = coinPaprikaResponse.quotes.USD.percent_change_15m
+                
+                completion(CurrencyPrice(name: currencyName, price: currencyPrice, change_15m: currencyChange))
+            case .failure(let error):
+                print("Request failed with error: \(error.localizedDescription)")
+            }
+        }
+    }
     
     func fetchEthereumMainnet(address: String, completion: @escaping (String) -> Void) {
         fetchBalance(path: Paths.EthereumMainnet, address: address, completion: completion)

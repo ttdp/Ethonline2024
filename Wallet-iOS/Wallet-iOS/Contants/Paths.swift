@@ -24,4 +24,8 @@ struct Paths {
     
     static let NFT = "https://eth-mainnet.alchemyapi.io/v2/\(AlchemyAPIKEY)/getNFTsForOwner"
     
+    static let EthereumPrice = "https://api.coinpaprika.com/v1/tickers/eth-ethereum"
+    static let ArbitrumPrice = "https://api.coinpaprika.com/v1/tickers/arb-arbitrum"
+    static let OptimismPrice = "https://api.coinpaprika.com/v1/tickers/op-optimism"
+    
 }

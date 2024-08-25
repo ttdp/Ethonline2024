@@ -122,8 +122,8 @@ class TxViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate
 
 class TxViewTableCell: BaseTableViewCell {
     
-    let blankView: BlankView = {
-        let view = BlankView()
+    let blankView: BaseView = {
+        let view = BaseView()
         return view
     }()
     
@@ -132,24 +132,6 @@ class TxViewTableCell: BaseTableViewCell {
         contentView.addConstts(format: "H:|[v0]|", views: blankView)
         let size = Int(Screen.imageHeightPadding_15 * 2 / 3)
         contentView.addConstts(format: "V:|[v0(\(size))]|", views: blankView)
-    }
-    
-}
-
-class BlankView: BaseView {
-
-    let backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 10
-        return view
-    }()
-    
-    override func setUpViews() {
-        backgroundColor = Colors.groupedBackground_primary
-        addSubview(backgroundView)
-        addConstts(format: "H:|-15-[v0]-15-|", views: backgroundView)
-        addConstts(format: "V:|-15-[v0]-0-|", views: backgroundView)
     }
     
 }

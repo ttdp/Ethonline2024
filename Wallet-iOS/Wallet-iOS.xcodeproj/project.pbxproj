@@ -71,6 +71,7 @@
 		506A73F62C7953C000A62FC7 /* HostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73F52C7953C000A62FC7 /* HostViewModel.swift */; };
 		506A73F82C79555400A62FC7 /* HostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73F72C79555400A62FC7 /* HostCoordinator.swift */; };
 		506A73FA2C7AB30500A62FC7 /* AlchemyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73F92C7AB30500A62FC7 /* AlchemyResponse.swift */; };
+		506A74002C7AD3AF00A62FC7 /* CoinPaprikaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73FF2C7AD3AF00A62FC7 /* CoinPaprikaResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		506A73F52C7953C000A62FC7 /* HostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewModel.swift; sourceTree = "<group>"; };
 		506A73F72C79555400A62FC7 /* HostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCoordinator.swift; sourceTree = "<group>"; };
 		506A73F92C7AB30500A62FC7 /* AlchemyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlchemyResponse.swift; sourceTree = "<group>"; };
+		506A73FF2C7AD3AF00A62FC7 /* CoinPaprikaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPaprikaResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			children = (
 				2726EB072C7A26A7001ACFE2 /* NFTModel.swift */,
 				506A73F92C7AB30500A62FC7 /* AlchemyResponse.swift */,
+				506A73FF2C7AD3AF00A62FC7 /* CoinPaprikaResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				506A73A42C7943FB00A62FC7 /* Stack.swift in Sources */,
 				2726EAF52C79F362001ACFE2 /* JazzColors.swift in Sources */,
 				506A73F42C7952FA00A62FC7 /* HostViewController.swift in Sources */,
+				506A74002C7AD3AF00A62FC7 /* CoinPaprikaResponse.swift in Sources */,
 				506A73982C79435700A62FC7 /* Reusable+Extension.swift in Sources */,
 				506A73AF2C7944FC00A62FC7 /* BalanceViewController.swift in Sources */,
 				2726EB082C7A26A7001ACFE2 /* NFTModel.swift in Sources */,

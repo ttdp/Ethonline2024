@@ -122,8 +122,8 @@ class SettingViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
 
 class SettingViewTableCell: BaseTableViewCell {
     
-    let blankView: BlankView = {
-        let view = BlankView()
+    let blankView: BaseView = {
+        let view = BaseView()
         return view
     }()
     
