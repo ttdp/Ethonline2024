@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import BigInt
 import Alamofire
+import BigInt
 
 protocol BalanceDataModelProtocol {
     func fetchEthereumPrice(completion: @escaping (TokenQuota) -> Void)

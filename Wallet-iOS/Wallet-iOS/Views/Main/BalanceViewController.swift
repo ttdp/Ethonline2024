@@ -86,6 +86,17 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         return view
     }()
     
+    lazy var sendButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.setTitle("Send", for: .normal)
+        view.setTitleColor(.systemBlue, for: .normal)
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        return view
+    }()
+    
     lazy var tableView: BalanceViewTableView = {
         let tableView = BalanceViewTableView(frame: .zero, style: .insetGrouped)
         tableView.controller = self
@@ -110,6 +121,11 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         avatarView.topAnchor.constraint(equalTo: naviView.bottomAnchor, constant: 20).isActive = true
         
+        view.addSubview(sendButton)
+        view.addConstts(format: "H:|-20-[v0(80)]", views: sendButton)
+        view.addConstts(format: "V:[v0(40)]", views: sendButton)
+        sendButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
+        
         naviView.addSubview(menu)
         naviView.addConstts(format: "H:|-10-[v0]", views: menu)
         naviView.addConstts(format: "V:[v0]|", views: menu)
@@ -123,6 +139,17 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     
     @objc func handleSide() {
         showSideMenu()
+    }
+    
+    @objc func handleSend() {
+        print("Here we go")
+        
+        let receiver = "0xD0f9482e1163587CD0793DABad03Bf74bA5AB0ab"
+        let sendTxViewModel = SendTxViewModel()
+        
+        sendTxViewModel.sendEther(address: receiver, value: 0.001) {
+            
+        }
     }
     
     @objc func handleScan() {
