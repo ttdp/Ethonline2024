@@ -24,17 +24,43 @@ class BalanceViewModel: ViewModelProtocol {
         self.dataModel = dataModel
     }
     
-    func loadBalance(for address: String) {
-        guard let address = EthereumAddress(address) else { return }
-        
-        dataModel.fetchBalance(address: address) { balance in
-            print("Balance: \(balance) ETH")
+    func getEthereumMainnet(for address: String) {
+        dataModel.fetchEthereumMainnet(address: address) { balance in
+            print("Ethereum Mainnet: \(balance) ETH")
         }
     }
     
-    func loadNFTs(for address: String) {
-        guard let address = EthereumAddress(address) else { return }
-        
+    func getEthereumSepholia(for address: String) {
+        dataModel.fetchEthereumSepolia(address: address) { balance in
+            print("Ethereum Sepholia: \(balance) ETH")
+        }
+    }
+    
+    func getArtibrumMainnet(for address: String) {
+        dataModel.fetchArbitrumMainnet(address: address) { balance in
+            print("Arbitrum Mainnet: \(balance) ETH")
+        }
+    }
+    
+    func getArtibrumSepholia(for address: String) {
+        dataModel.fetchArbitrumSepolia(address: address) { balance in
+            print("Arbitrum Sepholia: \(balance) ETH")
+        }
+    }
+    
+    func getOptimismMainnet(for address: String) {
+        dataModel.fetchOptimismMainnet(address: address) { balance in
+            print("Optimism Mainnet: \(balance) ETH")
+        }
+    }
+    
+    func getOptimismSepholia(for address: String) {
+        dataModel.fetchOptimismSepolia(address: address) { balance in
+            print("Optimism Sepholia: \(balance) ETH")
+        }
+    }
+    
+    func getNFTs(for address: String) {
         dataModel.fetchNFTs(address: address) { nfts in
             print("NFT: \(nfts.count)")
         }

@@ -18,6 +18,15 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let address = "0x8FFE4DD9d2B6494F6173C4417Ad22134868987DE"
+        
+        viewModel.getEthereumMainnet(for: address)
+        viewModel.getEthereumSepholia(for: address)
+        viewModel.getArtibrumMainnet(for: address)
+        viewModel.getArtibrumSepholia(for: address)
+        viewModel.getOptimismMainnet(for: address)
+        viewModel.getOptimismSepholia(for: address)
     }
     
     lazy var naviView: BaseView = {
@@ -114,10 +123,6 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         guard let decimalSeed = Int(hexSeed, radix: 16) else { return }
         
         avatarView.seed = UInt32(decimalSeed)
-        
-        viewModel.loadBalance(for: "0x8FFE4DD9d2B6494F6173C4417Ad22134868987DE")
-        
-        viewModel.loadNFTs(for: "0x8FFE4DD9d2B6494F6173C4417Ad22134868987DE")
     }
     
 }

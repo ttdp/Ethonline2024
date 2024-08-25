@@ -70,6 +70,7 @@
 		506A73F42C7952FA00A62FC7 /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73F32C7952FA00A62FC7 /* HostViewController.swift */; };
 		506A73F62C7953C000A62FC7 /* HostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73F52C7953C000A62FC7 /* HostViewModel.swift */; };
 		506A73F82C79555400A62FC7 /* HostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73F72C79555400A62FC7 /* HostCoordinator.swift */; };
+		506A73FA2C7AB30500A62FC7 /* AlchemyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73F92C7AB30500A62FC7 /* AlchemyResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		506A73F32C7952FA00A62FC7 /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
 		506A73F52C7953C000A62FC7 /* HostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewModel.swift; sourceTree = "<group>"; };
 		506A73F72C79555400A62FC7 /* HostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCoordinator.swift; sourceTree = "<group>"; };
+		506A73F92C7AB30500A62FC7 /* AlchemyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlchemyResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				2726EB072C7A26A7001ACFE2 /* NFTModel.swift */,
+				506A73F92C7AB30500A62FC7 /* AlchemyResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,7 +294,7 @@
 		506A73AA2C7944C300A62FC7 /* DateModels */ = {
 			isa = PBXGroup;
 			children = (
-				506A73AB2C7944D700A62FC7 /* BalanceDataModel.swift */,
+				506A73FB2C7AB35900A62FC7 /* Main */,
 			);
 			path = DateModels;
 			sourceTree = "<group>";
@@ -386,6 +389,14 @@
 				506A73ED2C79522B00A62FC7 /* NFTCoordinator.swift */,
 				506A73EF2C79526900A62FC7 /* TxCoordinator.swift */,
 				506A73F12C7952A100A62FC7 /* SettingCoordinator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		506A73FB2C7AB35900A62FC7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				506A73AB2C7944D700A62FC7 /* BalanceDataModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -518,6 +529,7 @@
 				506A73C32C79471300A62FC7 /* BaseTabelViewCell.swift in Sources */,
 				506A73B12C79457200A62FC7 /* Toast.swift in Sources */,
 				2726EAF32C79F342001ACFE2 /* Jazzicon.swift in Sources */,
+				506A73FA2C7AB30500A62FC7 /* AlchemyResponse.swift in Sources */,
 				506A73602C79403800A62FC7 /* AppDelegate.swift in Sources */,
 				506A73AC2C7944D700A62FC7 /* BalanceDataModel.swift in Sources */,
 				506A73D62C794D9C00A62FC7 /* MenuContainerViewController.swift in Sources */,
