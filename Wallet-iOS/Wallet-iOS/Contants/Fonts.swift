@@ -40,6 +40,7 @@ struct BSFont {
     static let Regular_40 = Fonts.Roboto.Regular_40
     static let Regular_14 = Fonts.Roboto.Regular_14
     static let Regular_15 = Fonts.Roboto.Regular_15
+    static let Regular_22 = Fonts.Roboto.Regular_22
 }
 
 struct Fonts {
@@ -70,6 +71,7 @@ struct Fonts {
         static let Regular_16 = UIFont(name: Fonts.Roboto_Regular, size: 16)
         static let Regular_17 = UIFont(name: Fonts.Roboto_Regular, size: 17)
         static let Regular_18 = UIFont(name: Fonts.Roboto_Regular, size: 18)
+        static let Regular_22 = UIFont(name: Fonts.Roboto_Regular, size: 22)
         static let Regular_40 = UIFont(name: Fonts.Roboto_Regular, size: 40)
         
         static let Light_13 = UIFont(name: Fonts.Roboto_Light, size: 13)

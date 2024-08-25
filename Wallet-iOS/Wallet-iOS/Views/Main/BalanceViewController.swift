@@ -21,16 +21,41 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         
         let address = "0x8FFE4DD9d2B6494F6173C4417Ad22134868987DE"
         
-        viewModel.getEthereumMainnet(for: address)
-        viewModel.getEthereumSepholia(for: address)
-        viewModel.getArtibrumMainnet(for: address)
-        viewModel.getArtibrumSepholia(for: address)
-        viewModel.getOptimismMainnet(for: address)
-        viewModel.getOptimismSepholia(for: address)
+        viewModel.getEthereumMainnet(for: address) {
+            self.tableView.reloadData()
+        }
         
-        viewModel.getEthereumPrice()
-        viewModel.getArbitrumPrice()
-        viewModel.getOptimismPrice()
+        viewModel.getEthereumSepholia(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getArtibrumMainnet(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getArtibrumSepholia(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getOptimismMainnet(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getOptimismSepholia(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getEthereumPrice {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getArbitrumPrice {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getOptimismPrice {
+            self.tableView.reloadData()
+        }
     }
     
     lazy var naviView: BaseView = {
@@ -61,18 +86,6 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         return view
     }()
     
-    let balanceLabel: UILabel = {
-        let view = UILabel()
-        view.text = "Ethereum: "
-        return view
-    }()
-
-    let balanceValue: UILabel = {
-        let view = UILabel()
-        view.text = "0 ETH"
-        return view
-    }()
-    
     lazy var tableView: BalanceViewTableView = {
         let tableView = BalanceViewTableView(frame: .zero, style: .insetGrouped)
         tableView.controller = self
@@ -81,9 +94,11 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     }()
     
     override func setUpViews() {
+        view.backgroundColor = Colors.groupedBackground_primary
+        
         view.addSubview(tableView)
         view.addConstts(format: "H:|[v0]|", views: tableView)
-        view.addConstts(format: "V:|-284-[v0]|", views: tableView)
+        view.addConstts(format: "V:|-184-[v0]|", views: tableView)
         
         view.addSubview(naviView)
         view.addConstts(format: "H:|[v0]|", views: naviView)
@@ -94,12 +109,6 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         view.addConstts(format: "V:[v0(80)]", views: avatarView)
         avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         avatarView.topAnchor.constraint(equalTo: naviView.bottomAnchor, constant: 20).isActive = true
-        
-        view.addSubview(balanceLabel)
-        view.addSubview(balanceValue)
-        view.addConstts(format: "H:|-15-[v0]-10-[v1]", views: balanceLabel, balanceValue)
-        balanceLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 20).isActive = true
-        balanceValue.centerYAnchor.constraint(equalTo: balanceLabel.centerYAnchor).isActive = true
         
         naviView.addSubview(menu)
         naviView.addConstts(format: "H:|-10-[v0]", views: menu)
@@ -196,6 +205,17 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         
         cell.tokenIcon.image = token.icon
         cell.tokenName.text = token.name
+        cell.tokenPrice.text = token.formattedPrice
+        cell.tokenChange .text = token.changeSinceLast15Minutes
+        cell.balanceValue.text = token.formattedBalance
+        cell.balancePrice.text = token.ballanceValue
+        
+        if token.changeSinceLast15Minutes?.hasPrefix("+") ?? false {
+            cell.tokenChange.textColor = .systemGreen
+        } else {
+            cell.tokenChange.textColor = .systemRed
+        }
+        
         return cell
     }
     
@@ -226,8 +246,35 @@ class BalanceViewTableCell: BaseTableViewCell {
     
     let tokenName: UILabel = {
         let view = UILabel()
-        view.font = BSFont.primaryMedium
+        view.font = BSFont.Medium_22
         view.textColor = Colors.label_primary
+        return view
+    }()
+    
+    let tokenPrice: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.label
+        view.textColor = Colors.label_secondary
+        return view
+    }()
+    
+    let tokenChange: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.label
+        return view
+    }()
+    
+    let balanceValue: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.Medium_22
+        view.textColor = Colors.label_primary
+        return view
+    }()
+    
+    let balancePrice: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.label
+        view.textColor = Colors.label_secondary
         return view
     }()
     
@@ -239,12 +286,28 @@ class BalanceViewTableCell: BaseTableViewCell {
         contentView.addConstts(format: "V:|-20-[v0(80)]|", views: layerView)
         
         contentView.addSubview(tokenIcon)
-        contentView.addConstts(format: "H:|-10-[v0(60)]", views: tokenIcon)
+        contentView.addConstts(format: "H:|-15-[v0(60)]", views: tokenIcon)
         contentView.addConstts(format: "V:|-30-[v0(60)]-10-|", views: tokenIcon)
         
         contentView.addSubview(tokenName)
-        contentView.addConstts(format: "H:|-80-[v0]", views: tokenName)
-        contentView.addConstts(format: "V:|-30-[v0]", views: tokenName)
+        contentView.addConstts(format: "H:|-90-[v0]", views: tokenName)
+        contentView.addConstts(format: "V:|-35-[v0]", views: tokenName)
+        
+        contentView.addSubview(tokenPrice)
+        contentView.addConstts(format: "H:|-90-[v0]", views: tokenPrice)
+        contentView.addConstts(format: "V:|-65-[v0]", views: tokenPrice)
+        
+        contentView.addSubview(tokenChange)
+        contentView.addConstts(format: "V:|-65-[v0]", views: tokenChange)
+        tokenChange.leadingAnchor.constraint(equalTo: tokenPrice.trailingAnchor, constant: 10).isActive = true
+        
+        contentView.addSubview(balanceValue)
+        contentView.addConstts(format: "H:[v0]-10-|", views: balanceValue)
+        contentView.addConstts(format: "V:|-35-[v0]", views: balanceValue)
+        
+        contentView.addSubview(balancePrice)
+        contentView.addConstts(format: "H:[v0]-10-|", views: balancePrice)
+        contentView.addConstts(format: "V:|-65-[v0]", views: balancePrice)
     }
     
 }

@@ -33,7 +33,7 @@ struct QuoteDetails: Codable {
     let percent_change_24h: Double
 }
 
-struct CurrencyPrice {
+struct TokenQuota {
     let name: String
     let price: Double
     let change_15m: Double
