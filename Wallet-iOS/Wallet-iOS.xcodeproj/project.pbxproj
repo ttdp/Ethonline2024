@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2726EAEB2C79E255001ACFE2 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAEA2C79E255001ACFE2 /* Scan.swift */; };
-		2726EAEE2C79E5FC001ACFE2 /* SwiftQRCodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 2726EAED2C79E5FC001ACFE2 /* SwiftQRCodeScanner */; };
 		2726EAF12C79F325001ACFE2 /* JazziconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF02C79F325001ACFE2 /* JazziconImageView.swift */; };
 		2726EAF32C79F342001ACFE2 /* Jazzicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF22C79F342001ACFE2 /* Jazzicon.swift */; };
 		2726EAF52C79F362001ACFE2 /* JazzColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF42C79F362001ACFE2 /* JazzColors.swift */; };
 		2726EAF72C79F3A9001ACFE2 /* Squall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF62C79F3A9001ACFE2 /* Squall.swift */; };
 		2726EAF92C79F412001ACFE2 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF82C79F412001ACFE2 /* Mersenne.swift */; };
 		2726EB022C7A0F27001ACFE2 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EB012C7A0F27001ACFE2 /* Paths.swift */; };
-		2726EB052C7A251D001ACFE2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2726EB042C7A251D001ACFE2 /* Alamofire */; };
 		2726EB082C7A26A7001ACFE2 /* NFTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EB072C7A26A7001ACFE2 /* NFTModel.swift */; };
+		27451DC72C7BC58600768A67 /* Web3Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DC62C7BC58600768A67 /* Web3Auth */; };
+		27451DCA2C7BC67100768A67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DC92C7BC67100768A67 /* Alamofire */; };
+		27451DCF2C7BC68A00768A67 /* SwiftQRCodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DCE2C7BC68A00768A67 /* SwiftQRCodeScanner */; };
 		506A73602C79403800A62FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A735F2C79403800A62FC7 /* AppDelegate.swift */; };
 		506A73622C79403800A62FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73612C79403800A62FC7 /* SceneDelegate.swift */; };
 		506A73642C79403800A62FC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73632C79403800A62FC7 /* ViewController.swift */; };
@@ -86,7 +87,6 @@
 		50D27C2F2C7B2D0900AAD3B4 /* SendTxDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D27C2E2C7B2D0900AAD3B4 /* SendTxDataModel.swift */; };
 		50D27C332C7B2DF600AAD3B4 /* SendTxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D27C322C7B2DF600AAD3B4 /* SendTxViewController.swift */; };
 		50D27C362C7B2E1600AAD3B4 /* SendTxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D27C352C7B2E1600AAD3B4 /* SendTxViewModel.swift */; };
-		50D27C462C7B383B00AAD3B4 /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = 50D27C452C7B383B00AAD3B4 /* BigInt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,9 +187,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50D27C462C7B383B00AAD3B4 /* BigInt in Frameworks */,
-				2726EB052C7A251D001ACFE2 /* Alamofire in Frameworks */,
-				2726EAEE2C79E5FC001ACFE2 /* SwiftQRCodeScanner in Frameworks */,
+				27451DC72C7BC58600768A67 /* Web3Auth in Frameworks */,
+				27451DCA2C7BC67100768A67 /* Alamofire in Frameworks */,
+				27451DCF2C7BC68A00768A67 /* SwiftQRCodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,9 +514,9 @@
 			);
 			name = "Wallet-iOS";
 			packageProductDependencies = (
-				2726EAED2C79E5FC001ACFE2 /* SwiftQRCodeScanner */,
-				2726EB042C7A251D001ACFE2 /* Alamofire */,
-				50D27C452C7B383B00AAD3B4 /* BigInt */,
+				27451DC62C7BC58600768A67 /* Web3Auth */,
+				27451DC92C7BC67100768A67 /* Alamofire */,
+				27451DCE2C7BC68A00768A67 /* SwiftQRCodeScanner */,
 			);
 			productName = "Wallet-iOS";
 			productReference = 506A735C2C79403800A62FC7 /* Wallet-iOS.app */;
@@ -569,9 +569,9 @@
 			);
 			mainGroup = 506A73532C79403800A62FC7;
 			packageReferences = (
-				2726EAEC2C79E5FC001ACFE2 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */,
-				2726EB032C7A251D001ACFE2 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				50D27C442C7B383B00AAD3B4 /* XCRemoteSwiftPackageReference "BigInt" */,
+				27451DC52C7BC58600768A67 /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */,
+				27451DC82C7BC67100768A67 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				27451DCD2C7BC68A00768A67 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */,
 			);
 			productRefGroup = 506A735D2C79403800A62FC7 /* Products */;
 			projectDirPath = "";
@@ -960,15 +960,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2726EAEC2C79E5FC001ACFE2 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */ = {
+		27451DC52C7BC58600768A67 /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vinodiOS/SwiftQRCodeScanner";
+			repositoryURL = "https://github.com/Web3Auth/web3auth-swift-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.16.0;
+				minimumVersion = 9.0.0;
 			};
 		};
-		2726EB032C7A251D001ACFE2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		27451DC82C7BC67100768A67 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -976,31 +976,31 @@
 				minimumVersion = 5.9.1;
 			};
 		};
-		50D27C442C7B383B00AAD3B4 /* XCRemoteSwiftPackageReference "BigInt" */ = {
+		27451DCD2C7BC68A00768A67 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gemwalletcom/BigInt";
+			repositoryURL = "https://github.com/vinodiOS/SwiftQRCodeScanner";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				minimumVersion = 1.16.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2726EAED2C79E5FC001ACFE2 /* SwiftQRCodeScanner */ = {
+		27451DC62C7BC58600768A67 /* Web3Auth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2726EAEC2C79E5FC001ACFE2 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */;
-			productName = SwiftQRCodeScanner;
+			package = 27451DC52C7BC58600768A67 /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */;
+			productName = Web3Auth;
 		};
-		2726EB042C7A251D001ACFE2 /* Alamofire */ = {
+		27451DC92C7BC67100768A67 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2726EB032C7A251D001ACFE2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 27451DC82C7BC67100768A67 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		50D27C452C7B383B00AAD3B4 /* BigInt */ = {
+		27451DCE2C7BC68A00768A67 /* SwiftQRCodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 50D27C442C7B383B00AAD3B4 /* XCRemoteSwiftPackageReference "BigInt" */;
-			productName = BigInt;
+			package = 27451DCD2C7BC68A00768A67 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */;
+			productName = SwiftQRCodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
