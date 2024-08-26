@@ -28,4 +28,8 @@ class BalanceCoordinator: AppCoordinator {
 
 extension BalanceCoordinator: BalanceViewModelCoordinator {
     
+    func gotoAuth() {
+        AuthCoordinator(window: window).start()
+    }
+    
 }

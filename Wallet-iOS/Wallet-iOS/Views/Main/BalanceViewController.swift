@@ -86,6 +86,17 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         return view
     }()
     
+    lazy var authButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.setTitle("Auth", for: .normal)
+        view.setTitleColor(.systemBlue, for: .normal)
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.addTarget(self, action: #selector(handleAuth), for: .touchUpInside)
+        return view
+    }()
+    
     lazy var sendButton: UIButton = {
         let view = UIButton(type: .system)
         view.setTitle("Send", for: .normal)
@@ -121,8 +132,13 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         avatarView.topAnchor.constraint(equalTo: naviView.bottomAnchor, constant: 20).isActive = true
         
+        view.addSubview(authButton)
+        view.addConstts(format: "H:|-20-[v0(80)]", views: authButton)
+        view.addConstts(format: "V:[v0(40)]", views: authButton)
+        authButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
+        
         view.addSubview(sendButton)
-        view.addConstts(format: "H:|-20-[v0(80)]", views: sendButton)
+        view.addConstts(format: "H:[v0(80)]-20-|", views: sendButton)
         view.addConstts(format: "V:[v0(40)]", views: sendButton)
         sendButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
         
@@ -139,6 +155,10 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     
     @objc func handleSide() {
         showSideMenu()
+    }
+    
+    @objc func handleAuth() {
+        viewModel.showAuth()
     }
     
     @objc func handleSend() {

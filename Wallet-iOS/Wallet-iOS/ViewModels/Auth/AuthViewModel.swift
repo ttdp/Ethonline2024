@@ -1,19 +1,20 @@
 //
-//  SendTxDataModel.swift
+//  AuthViewModel.swift
 //  Wallet-iOS
 //
-//  Created by Tian Tong on 2024/8/25.
+//  Created by TIAN TONG on 8/26/24.
 //
 
 import Foundation
-import Alamofire
 import Web3Auth
 
-protocol SendTxDataModelProtocol {
-    func sendTranscation(address: String, value: Double, completion: @escaping () -> Void)
+protocol AuthViewModelCoordinator {
+    
 }
 
-class SendTxDataModel: SendTxDataModelProtocol {
+class AuthViewModel: ViewModelProtocol {
+    
+    var coordinator: AuthViewModelCoordinator?
     
     let clientId = "BMOysTorFajRIKzocJdtuXd_VFuywM5pkByV2NZ2arhqYSRv_p92rraMlgUE1G6dfaCS0SNX52vNvBHb4l9ZRWc"
     let network: Network = .testnet
@@ -23,10 +24,12 @@ class SendTxDataModel: SendTxDataModelProtocol {
     var isLoading = false
     var loggedIn: Bool = false
     
-    func sendTranscation(address: String, value: Double, completion: @escaping () -> Void) {
-        
-    }
+    let dateModel: AuthDataModelProtocol
     
+    init(dataModel: AuthDataModelProtocol = AuthDataModel()) {
+        self.dateModel = dataModel
+    }
+
     func setup() async {
         guard web3Auth == nil else { return }
         await MainActor.run(body: {
@@ -40,6 +43,8 @@ class SendTxDataModel: SendTxDataModelProtocol {
                 network: network,
                 redirectUrl: "web3auth.ios-example://auth"
             ))
+            
+            print("Auth is ready")
         } catch {
             print("Something went wrong")
         }

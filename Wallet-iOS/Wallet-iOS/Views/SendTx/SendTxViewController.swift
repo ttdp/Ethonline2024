@@ -9,6 +9,12 @@ import UIKit
 
 class SendTxViewController: BaseViewController<SendTxViewModel> {
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Task {
+            await viewModel.setup()
+        }
+    }
     
 }

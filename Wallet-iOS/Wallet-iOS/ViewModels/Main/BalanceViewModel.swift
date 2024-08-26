@@ -9,7 +9,9 @@ import UIKit
 
 protocol ViewModelProtocol {}
 
-protocol BalanceViewModelCoordinator {}
+protocol BalanceViewModelCoordinator {
+    func gotoAuth()
+}
 
 enum TokenType: String {
     case ethereum
@@ -163,6 +165,10 @@ class BalanceViewModel: ViewModelProtocol {
                 balances[index] = _balance
             }
         }
+    }
+    
+    func showAuth() {
+        coordinator?.gotoAuth()
     }
     
 }

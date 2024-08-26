@@ -18,6 +18,11 @@
 		27451DC72C7BC58600768A67 /* Web3Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DC62C7BC58600768A67 /* Web3Auth */; };
 		27451DCA2C7BC67100768A67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DC92C7BC67100768A67 /* Alamofire */; };
 		27451DCF2C7BC68A00768A67 /* SwiftQRCodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DCE2C7BC68A00768A67 /* SwiftQRCodeScanner */; };
+		277C25972C7BFA250034AC0A /* Web3Auth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 277C25962C7BFA250034AC0A /* Web3Auth.plist */; };
+		277C259D2C7C00C70034AC0A /* AuthDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C259C2C7C00C70034AC0A /* AuthDataModel.swift */; };
+		277C25A02C7C00D80034AC0A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C259F2C7C00D80034AC0A /* AuthViewModel.swift */; };
+		277C25A22C7C014F0034AC0A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A12C7C014F0034AC0A /* AuthViewController.swift */; };
+		277C25A52C7C022C0034AC0A /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A42C7C022C0034AC0A /* AuthCoordinator.swift */; };
 		506A73602C79403800A62FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A735F2C79403800A62FC7 /* AppDelegate.swift */; };
 		506A73622C79403800A62FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73612C79403800A62FC7 /* SceneDelegate.swift */; };
 		506A73642C79403800A62FC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73632C79403800A62FC7 /* ViewController.swift */; };
@@ -108,6 +113,11 @@
 		2726EAF82C79F412001ACFE2 /* Mersenne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mersenne.swift; sourceTree = "<group>"; };
 		2726EB012C7A0F27001ACFE2 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
 		2726EB072C7A26A7001ACFE2 /* NFTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTModel.swift; sourceTree = "<group>"; };
+		277C25962C7BFA250034AC0A /* Web3Auth.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Web3Auth.plist; sourceTree = "<group>"; };
+		277C259C2C7C00C70034AC0A /* AuthDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataModel.swift; sourceTree = "<group>"; };
+		277C259F2C7C00D80034AC0A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		277C25A12C7C014F0034AC0A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		277C25A42C7C022C0034AC0A /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		506A735C2C79403800A62FC7 /* Wallet-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallet-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A735F2C79403800A62FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506A73612C79403800A62FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +235,38 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		277C25982C7C001D0034AC0A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				277C25A12C7C014F0034AC0A /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		277C25992C7C00A40034AC0A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				277C259C2C7C00C70034AC0A /* AuthDataModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		277C259E2C7C00CC0034AC0A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				277C259F2C7C00D80034AC0A /* AuthViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		277C25A32C7C02200034AC0A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				277C25A42C7C022C0034AC0A /* AuthCoordinator.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		506A73532C79403800A62FC7 = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +305,7 @@
 				506A738F2C79428F00A62FC7 /* Supporting Files */,
 				506A73632C79403800A62FC7 /* ViewController.swift */,
 				506A736D2C79403900A62FC7 /* Info.plist */,
+				277C25962C7BFA250034AC0A /* Web3Auth.plist */,
 			);
 			path = "Wallet-iOS";
 			sourceTree = "<group>";
@@ -303,6 +346,7 @@
 			children = (
 				506A73A02C7943D700A62FC7 /* AppCoordinator.swift */,
 				506A73EA2C7951F300A62FC7 /* Main */,
+				277C25A32C7C02200034AC0A /* Auth */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -322,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				506A73E12C794F7300A62FC7 /* Main */,
+				277C259E2C7C00CC0034AC0A /* Auth */,
 				50D27C342C7B2E0800AAD3B4 /* SendTx */,
 			);
 			path = ViewModels;
@@ -331,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				506A73FB2C7AB35900A62FC7 /* Main */,
+				277C25992C7C00A40034AC0A /* Auth */,
 				50D27C302C7B2DBD00AAD3B4 /* SendTx */,
 			);
 			path = DateModels;
@@ -341,6 +387,7 @@
 			children = (
 				506A73B92C79468600A62FC7 /* Base */,
 				506A73C82C794BE700A62FC7 /* Main */,
+				277C25982C7C001D0034AC0A /* Auth */,
 				50D27C312C7B2DE500AAD3B4 /* SendTx */,
 			);
 			path = Views;
@@ -602,6 +649,7 @@
 				506A74172C7AE4C200A62FC7 /* Roboto-MediumItalic.ttf in Resources */,
 				506A74192C7AE4C200A62FC7 /* Roboto-Thin.ttf in Resources */,
 				506A74102C7AE4C200A62FC7 /* Roboto-BlackItalic.ttf in Resources */,
+				277C25972C7BFA250034AC0A /* Web3Auth.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +695,7 @@
 				506A739C2C79439100A62FC7 /* UserDefaulfs+Extension.swift in Sources */,
 				506A73DC2C794DDB00A62FC7 /* Options.swift in Sources */,
 				506A73A42C7943FB00A62FC7 /* Stack.swift in Sources */,
+				277C25A52C7C022C0034AC0A /* AuthCoordinator.swift in Sources */,
 				2726EAF52C79F362001ACFE2 /* JazzColors.swift in Sources */,
 				506A73F42C7952FA00A62FC7 /* HostViewController.swift in Sources */,
 				506A74002C7AD3AF00A62FC7 /* CoinPaprikaResponse.swift in Sources */,
@@ -671,6 +720,8 @@
 				506A73F62C7953C000A62FC7 /* HostViewModel.swift in Sources */,
 				506A739E2C7943AF00A62FC7 /* UIViewController+Extension.swift in Sources */,
 				2726EB022C7A0F27001ACFE2 /* Paths.swift in Sources */,
+				277C25A02C7C00D80034AC0A /* AuthViewModel.swift in Sources */,
+				277C259D2C7C00C70034AC0A /* AuthDataModel.swift in Sources */,
 				50D27C362C7B2E1600AAD3B4 /* SendTxViewModel.swift in Sources */,
 				2726EAF12C79F325001ACFE2 /* JazziconImageView.swift in Sources */,
 				506A73E32C794F7F00A62FC7 /* SideMenuViewModel.swift in Sources */,
@@ -680,6 +731,7 @@
 				2726EAEB2C79E255001ACFE2 /* Scan.swift in Sources */,
 				506A73D42C794D7F00A62FC7 /* MenuAnimator.swift in Sources */,
 				506A73CC2C794C2900A62FC7 /* TxViewController.swift in Sources */,
+				277C25A22C7C014F0034AC0A /* AuthViewController.swift in Sources */,
 				506A73962C79433100A62FC7 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
