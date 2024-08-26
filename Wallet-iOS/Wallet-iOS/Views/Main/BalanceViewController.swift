@@ -56,6 +56,10 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         viewModel.getOptimismPrice {
             self.tableView.reloadData()
         }
+        
+        Task {
+            await AuthManager.shared.setup()
+        }
     }
     
     lazy var naviView: BaseView = {
@@ -97,14 +101,14 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         return view
     }()
     
-    lazy var sendButton: UIButton = {
+    lazy var userButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Send", for: .normal)
+        view.setTitle("User", for: .normal)
         view.setTitleColor(.systemBlue, for: .normal)
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.systemBlue.cgColor
-        view.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        view.addTarget(self, action: #selector(handleUser), for: .touchUpInside)
         return view
     }()
     
@@ -137,10 +141,10 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         view.addConstts(format: "V:[v0(40)]", views: authButton)
         authButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
         
-        view.addSubview(sendButton)
-        view.addConstts(format: "H:[v0(80)]-20-|", views: sendButton)
-        view.addConstts(format: "V:[v0(40)]", views: sendButton)
-        sendButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
+        view.addSubview(userButton)
+        view.addConstts(format: "H:[v0(80)]-20-|", views: userButton)
+        view.addConstts(format: "V:[v0(40)]", views: userButton)
+        userButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
         
         naviView.addSubview(menu)
         naviView.addConstts(format: "H:|-10-[v0]", views: menu)
@@ -161,14 +165,13 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         viewModel.showAuth()
     }
     
-    @objc func handleSend() {
-        print("Here we go")
-        
-        let receiver = "0xD0f9482e1163587CD0793DABad03Bf74bA5AB0ab"
-        let sendTxViewModel = SendTxViewModel()
-        
-        sendTxViewModel.sendEther(address: receiver, value: 0.001) {
-            
+    @objc func handleUser() {
+//        let receiver = "0xD0f9482e1163587CD0793DABad03Bf74bA5AB0ab"
+    
+        viewModel.showUser { hasUser in
+            if !hasUser {
+                self.warning("No user info found.")
+            }
         }
     }
     

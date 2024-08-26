@@ -151,7 +151,7 @@ class Toast: UIView {
         let sceneDelegaet = windowSence?.delegate as? SceneDelegate
         sceneDelegaet?.window?.addSubview(self)
         
-        let y: CGFloat = Screen.hasTopNotch ? 88 : 64
+        let y: CGFloat = Screen.hasTopNotch ? 104 : 64
         UIView.animate(withDuration: ToastConfig.appearDuration, animations: {
             self.transform = CGAffineTransform(translationX: 0, y: y)
         }) { _ in

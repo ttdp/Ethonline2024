@@ -7,10 +7,9 @@
 
 import UIKit
 
-protocol ViewModelProtocol {}
-
 protocol BalanceViewModelCoordinator {
     func gotoAuth()
+    func gotoUser()
 }
 
 enum TokenType: String {
@@ -169,6 +168,15 @@ class BalanceViewModel: ViewModelProtocol {
     
     func showAuth() {
         coordinator?.gotoAuth()
+    }
+    
+    func showUser(completion: (Bool) -> Void) {
+        guard AuthManager.shared.user != nil else {
+            completion(false)
+            return
+        }
+        
+        coordinator?.gotoUser()
     }
     
 }

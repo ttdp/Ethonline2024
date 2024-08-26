@@ -6,20 +6,21 @@
 //
 
 import UIKit
+import SwiftUI
 
 class AuthViewController: BaseViewController<AuthViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Task {
-            await viewModel.setup()
-        }
     }
     
     override func setUpViews() {
-        view.backgroundColor = .systemBlue
+        let hostingController = UIHostingController(rootView: LoginView())
+        guard let loginView = hostingController.view else { return }
+        
+        view.addSubview(loginView)
+        view.addConstts(format: "H:|[v0]|", views: loginView)
+        view.addConstts(format: "V:|[v0]|", views: loginView)
     }
     
 }
-

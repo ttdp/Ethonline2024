@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol AuthDataModelProtocol {
-    
-}
+protocol AuthDataModelProtocol {}
 
-class AuthDataModel: AuthDataModelProtocol {
-    
-}
+class AuthDataModel: AuthDataModelProtocol {}

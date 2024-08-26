@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2726EAEB2C79E255001ACFE2 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAEA2C79E255001ACFE2 /* Scan.swift */; };
+		271BBEF02C7C18ED00E24D81 /* web3.swift in Frameworks */ = {isa = PBXBuildFile; productRef = 271BBEEF2C7C18ED00E24D81 /* web3.swift */; };
+		271BBEFA2C7C31FA00E24D81 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBEF92C7C31FA00E24D81 /* AuthManager.swift */; };
+		271BBEFC2C7C328200E24D81 /* GlobalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBEFB2C7C328200E24D81 /* GlobalCoordinator.swift */; };
+		271BBEFE2C7C3FE400E24D81 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBEFD2C7C3FE400E24D81 /* UserViewController.swift */; };
+		271BBF002C7C401400E24D81 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBEFF2C7C401400E24D81 /* UserViewModel.swift */; };
+		271BBF022C7C406300E24D81 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBF012C7C406300E24D81 /* UserDataModel.swift */; };
+		271BBF042C7C408B00E24D81 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBF032C7C408B00E24D81 /* UserView.swift */; };
+		271BBF062C7C448400E24D81 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBF052C7C448400E24D81 /* ViewModelProtocol.swift */; };
+		271BBF082C7C457D00E24D81 /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBF072C7C457D00E24D81 /* UserCoordinator.swift */; };
+		271BBF0A2C7C52B500E24D81 /* Web3Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBF092C7C52B500E24D81 /* Web3Utils.swift */; };
 		2726EAF12C79F325001ACFE2 /* JazziconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF02C79F325001ACFE2 /* JazziconImageView.swift */; };
 		2726EAF32C79F342001ACFE2 /* Jazzicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF22C79F342001ACFE2 /* Jazzicon.swift */; };
 		2726EAF52C79F362001ACFE2 /* JazzColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF42C79F362001ACFE2 /* JazzColors.swift */; };
@@ -23,6 +32,8 @@
 		277C25A02C7C00D80034AC0A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C259F2C7C00D80034AC0A /* AuthViewModel.swift */; };
 		277C25A22C7C014F0034AC0A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A12C7C014F0034AC0A /* AuthViewController.swift */; };
 		277C25A52C7C022C0034AC0A /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A42C7C022C0034AC0A /* AuthCoordinator.swift */; };
+		277C25A72C7C0A430034AC0A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A62C7C0A430034AC0A /* LoginView.swift */; };
+		277C25AB2C7C17CC0034AC0A /* Web3PRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25AA2C7C17CC0034AC0A /* Web3PRC.swift */; };
 		506A73602C79403800A62FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A735F2C79403800A62FC7 /* AppDelegate.swift */; };
 		506A73622C79403800A62FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73612C79403800A62FC7 /* SceneDelegate.swift */; };
 		506A73642C79403800A62FC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73632C79403800A62FC7 /* ViewController.swift */; };
@@ -105,7 +116,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2726EAEA2C79E255001ACFE2 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
+		271BBEF92C7C31FA00E24D81 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		271BBEFB2C7C328200E24D81 /* GlobalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalCoordinator.swift; sourceTree = "<group>"; };
+		271BBEFD2C7C3FE400E24D81 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		271BBEFF2C7C401400E24D81 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		271BBF012C7C406300E24D81 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		271BBF032C7C408B00E24D81 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		271BBF052C7C448400E24D81 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		271BBF072C7C457D00E24D81 /* UserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoordinator.swift; sourceTree = "<group>"; };
+		271BBF092C7C52B500E24D81 /* Web3Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3Utils.swift; sourceTree = "<group>"; };
 		2726EAF02C79F325001ACFE2 /* JazziconImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JazziconImageView.swift; sourceTree = "<group>"; };
 		2726EAF22C79F342001ACFE2 /* Jazzicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jazzicon.swift; sourceTree = "<group>"; };
 		2726EAF42C79F362001ACFE2 /* JazzColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JazzColors.swift; sourceTree = "<group>"; };
@@ -118,6 +137,8 @@
 		277C259F2C7C00D80034AC0A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		277C25A12C7C014F0034AC0A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		277C25A42C7C022C0034AC0A /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		277C25A62C7C0A430034AC0A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		277C25AA2C7C17CC0034AC0A /* Web3PRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3PRC.swift; sourceTree = "<group>"; };
 		506A735C2C79403800A62FC7 /* Wallet-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallet-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A735F2C79403800A62FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506A73612C79403800A62FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +220,7 @@
 			files = (
 				27451DC72C7BC58600768A67 /* Web3Auth in Frameworks */,
 				27451DCA2C7BC67100768A67 /* Alamofire in Frameworks */,
+				271BBEF02C7C18ED00E24D81 /* web3.swift in Frameworks */,
 				27451DCF2C7BC68A00768A67 /* SwiftQRCodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +261,9 @@
 			isa = PBXGroup;
 			children = (
 				277C25A12C7C014F0034AC0A /* AuthViewController.swift */,
+				271BBEFD2C7C3FE400E24D81 /* UserViewController.swift */,
+				277C25A62C7C0A430034AC0A /* LoginView.swift */,
+				271BBF032C7C408B00E24D81 /* UserView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -247,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				277C259C2C7C00C70034AC0A /* AuthDataModel.swift */,
+				271BBF012C7C406300E24D81 /* UserDataModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -255,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				277C259F2C7C00D80034AC0A /* AuthViewModel.swift */,
+				271BBEFF2C7C401400E24D81 /* UserViewModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -263,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				277C25A42C7C022C0034AC0A /* AuthCoordinator.swift */,
+				271BBF072C7C457D00E24D81 /* UserCoordinator.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -345,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				506A73A02C7943D700A62FC7 /* AppCoordinator.swift */,
+				271BBEFB2C7C328200E24D81 /* GlobalCoordinator.swift */,
 				506A73EA2C7951F300A62FC7 /* Main */,
 				277C25A32C7C02200034AC0A /* Auth */,
 			);
@@ -357,7 +386,8 @@
 				506A73A32C7943FB00A62FC7 /* Stack.swift */,
 				506A73B02C79457200A62FC7 /* Toast.swift */,
 				506A73B22C7945A000A62FC7 /* Screen.swift */,
-				2726EAEA2C79E255001ACFE2 /* Scan.swift */,
+				277C25AA2C7C17CC0034AC0A /* Web3PRC.swift */,
+				271BBF092C7C52B500E24D81 /* Web3Utils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -365,6 +395,8 @@
 		506A73A72C7944A000A62FC7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				271BBEF92C7C31FA00E24D81 /* AuthManager.swift */,
+				271BBF052C7C448400E24D81 /* ViewModelProtocol.swift */,
 				506A73E12C794F7300A62FC7 /* Main */,
 				277C259E2C7C00CC0034AC0A /* Auth */,
 				50D27C342C7B2E0800AAD3B4 /* SendTx */,
@@ -564,6 +596,7 @@
 				27451DC62C7BC58600768A67 /* Web3Auth */,
 				27451DC92C7BC67100768A67 /* Alamofire */,
 				27451DCE2C7BC68A00768A67 /* SwiftQRCodeScanner */,
+				271BBEEF2C7C18ED00E24D81 /* web3.swift */,
 			);
 			productName = "Wallet-iOS";
 			productReference = 506A735C2C79403800A62FC7 /* Wallet-iOS.app */;
@@ -619,6 +652,7 @@
 				27451DC52C7BC58600768A67 /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */,
 				27451DC82C7BC67100768A67 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				27451DCD2C7BC68A00768A67 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */,
+				271BBEEE2C7C18ED00E24D81 /* XCRemoteSwiftPackageReference "web3" */,
 			);
 			productRefGroup = 506A735D2C79403800A62FC7 /* Products */;
 			projectDirPath = "";
@@ -675,16 +709,22 @@
 				506A73BD2C7946A700A62FC7 /* Colors.swift in Sources */,
 				506A73D02C794CB700A62FC7 /* SideMenuViewController.swift in Sources */,
 				506A73642C79403800A62FC7 /* ViewController.swift in Sources */,
+				271BBF062C7C448400E24D81 /* ViewModelProtocol.swift in Sources */,
 				50D27C2F2C7B2D0900AAD3B4 /* SendTxDataModel.swift in Sources */,
+				271BBF022C7C406300E24D81 /* UserDataModel.swift in Sources */,
 				506A73F82C79555400A62FC7 /* HostCoordinator.swift in Sources */,
 				506A73BF2C7946E900A62FC7 /* BaseViewController.swift in Sources */,
 				506A73CE2C794C4100A62FC7 /* SettingViewController.swift in Sources */,
 				506A73E02C794E2400A62FC7 /* SideMenuItemOptions.swift in Sources */,
+				271BBF002C7C401400E24D81 /* UserViewModel.swift in Sources */,
 				506A73DE2C794E0B00A62FC7 /* SideMenuItemContent.swift in Sources */,
 				506A73E52C794FCD00A62FC7 /* NFTViewModel.swift in Sources */,
+				271BBF0A2C7C52B500E24D81 /* Web3Utils.swift in Sources */,
 				506A73C12C79470000A62FC7 /* BaseTableView.swift in Sources */,
+				271BBF082C7C457D00E24D81 /* UserCoordinator.swift in Sources */,
 				506A73C32C79471300A62FC7 /* BaseTabelViewCell.swift in Sources */,
 				506A73B12C79457200A62FC7 /* Toast.swift in Sources */,
+				277C25AB2C7C17CC0034AC0A /* Web3PRC.swift in Sources */,
 				2726EAF32C79F342001ACFE2 /* Jazzicon.swift in Sources */,
 				506A73FA2C7AB30500A62FC7 /* AlchemyResponse.swift in Sources */,
 				506A73602C79403800A62FC7 /* AppDelegate.swift in Sources */,
@@ -693,7 +733,9 @@
 				506A73B32C7945A000A62FC7 /* Screen.swift in Sources */,
 				506A73C72C79473600A62FC7 /* BaseCollectionViewCell.swift in Sources */,
 				506A739C2C79439100A62FC7 /* UserDefaulfs+Extension.swift in Sources */,
+				271BBEFC2C7C328200E24D81 /* GlobalCoordinator.swift in Sources */,
 				506A73DC2C794DDB00A62FC7 /* Options.swift in Sources */,
+				271BBEFA2C7C31FA00E24D81 /* AuthManager.swift in Sources */,
 				506A73A42C7943FB00A62FC7 /* Stack.swift in Sources */,
 				277C25A52C7C022C0034AC0A /* AuthCoordinator.swift in Sources */,
 				2726EAF52C79F362001ACFE2 /* JazzColors.swift in Sources */,
@@ -709,12 +751,15 @@
 				506A73D82C794DAA00A62FC7 /* MenuTransitioningDelegate.swift in Sources */,
 				506A73A92C7944AD00A62FC7 /* BalanceViewModel.swift in Sources */,
 				506A73E72C794FFD00A62FC7 /* TxViewModel.swift in Sources */,
+				271BBEFE2C7C3FE400E24D81 /* UserViewController.swift in Sources */,
+				271BBF042C7C408B00E24D81 /* UserView.swift in Sources */,
 				506A73622C79403800A62FC7 /* SceneDelegate.swift in Sources */,
 				2726EAF92C79F412001ACFE2 /* Mersenne.swift in Sources */,
 				506A739A2C79437000A62FC7 /* UITextField+Extension.swift in Sources */,
 				506A73942C7942E700A62FC7 /* UIColor+Extension.swift in Sources */,
 				506A73B82C7945EB00A62FC7 /* Fonts.swift in Sources */,
 				506A73A62C79448500A62FC7 /* BalanceCoordinator.swift in Sources */,
+				277C25A72C7C0A430034AC0A /* LoginView.swift in Sources */,
 				506A73BB2C79469800A62FC7 /* BaseView.swift in Sources */,
 				506A73CA2C794BF900A62FC7 /* NFTViewController.swift in Sources */,
 				506A73F62C7953C000A62FC7 /* HostViewModel.swift in Sources */,
@@ -728,7 +773,6 @@
 				50D27C332C7B2DF600AAD3B4 /* SendTxViewController.swift in Sources */,
 				506A73DA2C794DC900A62FC7 /* MenuViewController.swift in Sources */,
 				506A73EC2C79520100A62FC7 /* SideMenuCoordinator.swift in Sources */,
-				2726EAEB2C79E255001ACFE2 /* Scan.swift in Sources */,
 				506A73D42C794D7F00A62FC7 /* MenuAnimator.swift in Sources */,
 				506A73CC2C794C2900A62FC7 /* TxViewController.swift in Sources */,
 				277C25A22C7C014F0034AC0A /* AuthViewController.swift in Sources */,
@@ -1012,6 +1056,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		271BBEEE2C7C18ED00E24D81 /* XCRemoteSwiftPackageReference "web3" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argentlabs/web3.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.1;
+			};
+		};
 		27451DC52C7BC58600768A67 /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Web3Auth/web3auth-swift-sdk";
@@ -1039,6 +1091,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		271BBEEF2C7C18ED00E24D81 /* web3.swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 271BBEEE2C7C18ED00E24D81 /* XCRemoteSwiftPackageReference "web3" */;
+			productName = web3.swift;
+		};
 		27451DC62C7BC58600768A67 /* Web3Auth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 27451DC52C7BC58600768A67 /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */;

@@ -32,4 +32,8 @@ extension BalanceCoordinator: BalanceViewModelCoordinator {
         AuthCoordinator(window: window).start()
     }
     
+    func gotoUser() {
+        UserCoordinator(window: window).start()
+    }
+    
 }

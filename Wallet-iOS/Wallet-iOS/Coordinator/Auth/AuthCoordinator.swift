@@ -21,6 +21,4 @@ class AuthCoordinator: AppCoordinator {
     
 }
 
-extension AuthCoordinator: AuthViewModelCoordinator {
-    
-}
+extension AuthCoordinator: AuthViewModelCoordinator {}
