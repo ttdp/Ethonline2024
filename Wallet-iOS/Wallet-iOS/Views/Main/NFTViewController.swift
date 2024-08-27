@@ -17,43 +17,21 @@ class NFTViewController: BaseViewController<NFTViewModel>, SideMenuItemContent {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = "NFT"
     }
     
-    lazy var naviView: BaseView = {
-        let view = BaseView()
-        view.backgroundColor = .lightGray
-        return view
-    }()
-    
-    lazy var menu: UIButton = {
-        let button = UIButton()
-        button.setTitle("NFT", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(handleSide), for: .touchUpInside)
-        return button
-    }()
-    
     lazy var tableView: NFTViewTableView = {
-        let tableView = NFTViewTableView(frame: .zero, style: .grouped)
+        let tableView = NFTViewTableView(frame: .zero, style: .insetGrouped)
         tableView.controller = self
         tableView.viewModel = self.viewModel
         return tableView
     }()
     
     override func setUpViews() {
+        view.backgroundColor = Colors.groupedBackground_primary
+        
         view.addSubview(tableView)
         view.addConstts(format: "H:|[v0]|", views: tableView)
-        view.addConstts(format: "V:|-84-[v0]|", views: tableView)
-        
-        view.addSubview(naviView)
-        view.addConstts(format: "H:|[v0]|", views: naviView)
-        view.addConstts(format: "V:|[v0(84)]", views: naviView)
-        
-        naviView.addSubview(menu)
-        naviView.addConstts(format: "H:|-10-[v0]", views: menu)
-        naviView.addConstts(format: "V:[v0]|", views: menu)
+        view.addConstts(format: "V:|[v0]|", views: tableView)
     }
     
     // MARK: - Method
@@ -71,7 +49,26 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
     
     // MARK: - View
     
-    var refresher: UIRefreshControl!
+    lazy var menuButton: UIButton = {
+        let button = UIButton()
+        let image = Images.MenuIcon!
+        let gradientImage = image.drawLinearGradient(
+            colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor],
+                direction: .zeroToOne)
+        button.setImage(gradientImage, for: .normal)
+        button.addTarget(self, action: #selector(handleSide), for: .touchUpInside)
+        return button
+    }()
+    
+    let titleLabel: UILabel = {
+        let view = UILabel()
+        view.text = "NFT"
+        view.font = BSFont.Medium_28
+        view.sizeToFit()
+        let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
+        view.textColor = UIColor(patternImage: gradientImage)
+        return view
+    }()
     
     override func setUpViews() {
         backgroundColor = Colors.groupedBackground_primary
@@ -79,17 +76,9 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
         delegate = self
         
         register(NFTViewTableCell.self)
-        
-        refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-        addSubview(refresher)
     }
     
     // MARK: - Action
-    
-    @objc func handleRefresh() {
-        
-    }
     
     @objc func handleSide() {
         controller.handleSide()
@@ -102,7 +91,7 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,27 +100,40 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        let view = UIView()
+        
+        view.addSubview(menuButton)
+        view.addConstts(format: "H:|-(-6)-[v0(44)]", views: menuButton)
+        view.addConstts(format: "V:|[v0(44)]", views: menuButton)
+        
+        view.addSubview(titleLabel)
+        view.addConstts(format: "H:[v0]", views: titleLabel)
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: menuButton.centerYAnchor).isActive = true
+
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return 60
     }
     
 }
 
 class NFTViewTableCell: BaseTableViewCell {
     
-    let blankView: BaseView = {
-        let view = BaseView()
+    let nftImage: UIImageView = {
+        let view = UIImageView()
+        view.image = Images.BigHugs
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
     override func setUpViews() {
-        contentView.addSubview(blankView)
-        contentView.addConstts(format: "H:|[v0]|", views: blankView)
-        let size = Int(Screen.imageHeightPadding_15 * 2 / 3)
-        contentView.addConstts(format: "V:|[v0(\(size))]|", views: blankView)
+        contentView.addSubview(nftImage)
+        contentView.addConstts(format: "H:|[v0]|", views: nftImage)
+        let size = Int(Screen.width - 40)
+        contentView.addConstts(format: "V:|[v0(\(size))]|", views: nftImage)
     }
     
 }

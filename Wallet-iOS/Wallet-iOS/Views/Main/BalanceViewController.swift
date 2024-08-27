@@ -31,13 +31,6 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         NotificationCenter.default.addObserver(self, selector: #selector(handleAuthState), name: .authState, object: nil)
     }
     
-    lazy var naviView: BaseView = {
-        let view = BaseView()
-        view.backgroundColor = .lightGray
-        view.alpha = 0
-        return view
-    }()
-    
     lazy var tableView: BalanceViewTableView = {
         let tableView = BalanceViewTableView(frame: .zero, style: .insetGrouped)
         tableView.controller = self
@@ -51,10 +44,6 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         view.addSubview(tableView)
         view.addConstts(format: "H:|[v0]|", views: tableView)
         view.addConstts(format: "V:|[v0]|", views: tableView)
-        
-        view.addSubview(naviView)
-        view.addConstts(format: "H:|[v0]|", views: naviView)
-        view.addConstts(format: "V:|[v0(84)]", views: naviView)
     }
     
     // MARK: - Method
@@ -165,8 +154,6 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
     
     // MARK: - View
     
-    var refresher: UIRefreshControl!
-    
     lazy var menuButton: UIButton = {
         let button = UIButton()
         let image = Images.MenuIcon!
@@ -243,17 +230,9 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         delegate = self
         
         register(BalanceViewTableCell.self)
-        
-        refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-        addSubview(refresher)
     }
     
     // MARK: - Action
-    
-    @objc func handleRefresh() {
-        
-    }
     
     @objc func handleSide() {
         controller.handleSide()
@@ -312,7 +291,7 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         
         view.addSubview(addressLabel)
         view.addConstts(format: "H:[v0]", views: addressLabel)
-        addressLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor).isActive = true
+        addressLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 5).isActive = true
         addressLabel.centerXAnchor.constraint(equalTo: avatarView.centerXAnchor).isActive = true
         
         view.addSubview(authButton)
