@@ -8,6 +8,8 @@
 import UIKit
 import SwiftQRCodeScanner
 
+let testAddress = "0x8FFE4DD9d2B6494F6173C4417Ad22134868987DE"
+
 class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemContent {
     
     override func viewWillAppear(_ animated: Bool) {
@@ -19,47 +21,14 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let address = "0x8FFE4DD9d2B6494F6173C4417Ad22134868987DE"
-        
-        viewModel.getEthereumMainnet(for: address) {
-            self.tableView.reloadData()
-        }
-        
-        viewModel.getEthereumSepholia(for: address) {
-            self.tableView.reloadData()
-        }
-        
-        viewModel.getArtibrumMainnet(for: address) {
-            self.tableView.reloadData()
-        }
-        
-        viewModel.getArtibrumSepholia(for: address) {
-            self.tableView.reloadData()
-        }
-        
-        viewModel.getOptimismMainnet(for: address) {
-            self.tableView.reloadData()
-        }
-        
-        viewModel.getOptimismSepholia(for: address) {
-            self.tableView.reloadData()
-        }
-        
-        viewModel.getEthereumPrice {
-            self.tableView.reloadData()
-        }
-        
-        viewModel.getArbitrumPrice {
-            self.tableView.reloadData()
-        }
-        
-        viewModel.getOptimismPrice {
-            self.tableView.reloadData()
-        }
-        
+        loadTokenPrice()
+        loadTokenBalance(address: testAddress)
+
         Task {
             await AuthManager.shared.setup()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAuthState), name: .authState, object: nil)
     }
     
     lazy var naviView: BaseView = {
@@ -87,6 +56,14 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         let view = JazziconImageView()
         view.layer.cornerRadius = 40
         view.clipsToBounds = true
+        return view
+    }()
+    
+    let addressLabel: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.label
+        view.textColor = Colors.label_secondary
+        view.text = testAddress
         return view
     }()
     
@@ -136,6 +113,11 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         avatarView.topAnchor.constraint(equalTo: naviView.bottomAnchor, constant: 20).isActive = true
         
+        view.addSubview(addressLabel)
+        view.addConstts(format: "H:[v0]", views: addressLabel)
+        addressLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor).isActive = true
+        addressLabel.centerXAnchor.constraint(equalTo: avatarView.centerXAnchor).isActive = true
+        
         view.addSubview(authButton)
         view.addConstts(format: "H:|-20-[v0(80)]", views: authButton)
         view.addConstts(format: "V:[v0(40)]", views: authButton)
@@ -157,8 +139,60 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     
     // MARK: - Method
     
+    func loadTokenPrice() {
+        viewModel.getEthereumPrice {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getArbitrumPrice {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getOptimismPrice {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func loadTokenBalance(address: String) {
+        viewModel.getEthereumMainnet(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getEthereumSepholia(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getArtibrumMainnet(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getArtibrumSepholia(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getOptimismMainnet(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getOptimismSepholia(for: address) {
+            self.tableView.reloadData()
+        }
+    }
+    
     @objc func handleSide() {
         showSideMenu()
+    }
+    
+    @objc func handleAuthState(notification: Notification) {
+        if let address = notification.object as? String {
+            addressLabel.text = address
+            updateAvatar(address)
+            loadTokenBalance(address: address)
+            
+            authButton.isHidden = true
+        } else {
+            authButton.isHidden = false
+        }
     }
     
     @objc func handleAuth() {
@@ -166,11 +200,9 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     }
     
     @objc func handleUser() {
-//        let receiver = "0xD0f9482e1163587CD0793DABad03Bf74bA5AB0ab"
-    
         viewModel.showUser { hasUser in
             if !hasUser {
-                self.warning("No user info found.")
+                self.warning("No auth user found.")
             }
         }
     }
@@ -181,8 +213,8 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         self.present(scanner, animated: true, completion: nil)
     }
     
-    func handleAddress(_ result: String) {
-        let hexSeed = result.suffix(8)
+    func updateAvatar(_ address: String) {
+        let hexSeed = address.suffix(8)
         guard let decimalSeed = Int(hexSeed, radix: 16) else { return }
         
         avatarView.seed = UInt32(decimalSeed)
@@ -193,9 +225,7 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
 extension BalanceViewController: QRScannerCodeDelegate {
     
     func qrScanner(_ controller: UIViewController, didScanQRCodeWithResult result: String) {
-        print(result)
-        
-        handleAddress(result)
+        updateAvatar(result)
     }
     
     func qrScanner(_ controller: UIViewController, didFailWithError error: SwiftQRCodeScanner.QRCodeError) {

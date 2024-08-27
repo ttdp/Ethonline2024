@@ -12,7 +12,7 @@ import UIKit
 open class JazziconImageView: UIView {
     
     override init(frame: CGRect) {
-        self.seed = 1
+        self.seed = 0
         super.init(frame: frame)
     }
     

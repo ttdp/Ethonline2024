@@ -13,7 +13,7 @@ struct UserView: View {
     @State private var isPrivateKeySectionVisible = false
     @State private var showingAlert = false
     
-    let web3RPC: Web3RPC
+    @StateObject var web3RPC: Web3RPC
 
     var body: some View {
         if let authState = AuthManager.shared.user {
@@ -55,8 +55,6 @@ struct UserView: View {
                 }
             }
             .listStyle(GroupedListStyle())
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("User Details")
         }
     }
     

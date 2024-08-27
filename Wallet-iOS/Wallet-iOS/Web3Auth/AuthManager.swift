@@ -22,11 +22,10 @@ class AuthManager {
     @Published var user: Web3AuthState?
     @Published var isLoading = false
     @Published var loggedIn: Bool = false
-
+    
     func setup() async {
-        print(loggedIn)
-        
         guard web3Auth == nil else { return }
+        
         await MainActor.run(body: {
             isLoading = true
         })
@@ -38,8 +37,6 @@ class AuthManager {
                 network: network,
                 redirectUrl: "web3auth.ios-example://auth"
             ))
-            
-            print("Auth is ready")
         } catch {
             print("Something went wrong")
         }
@@ -50,40 +47,43 @@ class AuthManager {
                 user = web3Auth?.state
                 loggedIn = true
                 
-                print("I have login.")
+                notifyAuthState()
             }
             isLoading = false
         })
     }
     
     func login(provider: Web3AuthProvider) {
-            Task {
-                do {
-                    let result = try await web3Auth?.login(
-                        W3ALoginParams(loginProvider: provider)
-                    )
-                    await MainActor.run(body: {
-                        user = result
-                        loggedIn = true
-                        
-                        GlobalCoordinator.dismiss()
-                    })
-                } catch {
-                    print("Error")
-                }
-            }
-        }
-    
-    func logout() throws {
-            Task {
-                try await web3Auth?.logout()
+        Task {
+            do {
+                let result = try await web3Auth?.login(
+                    W3ALoginParams(loginProvider: provider)
+                )
                 await MainActor.run(body: {
-                    loggedIn = false
+                    user = result
+                    loggedIn = true
+                    notifyAuthState()
                     
                     GlobalCoordinator.dismiss()
                 })
+            } catch {
+                print("Error")
             }
         }
+    }
+    
+    func logout() throws {
+        Task {
+            try await web3Auth?.logout()
+            await MainActor.run(body: {
+                user = nil
+                loggedIn = false
+                notifyAuthState()
+                
+                GlobalCoordinator.dismiss()
+            })
+        }
+    }
     
     func loginEmailPasswordless(provider: Web3AuthProvider, email: String) {
         Task {
@@ -94,13 +94,22 @@ class AuthManager {
                 await MainActor.run(body: {
                     user = result
                     loggedIn = true
+                    notifyAuthState()
                     
                     GlobalCoordinator.dismiss()
                 })
-                
             } catch {
                 print("Error")
             }
+        }
+    }
+    
+    private func notifyAuthState() {
+        if let user = user, let web3RPC = Web3RPC(user: user) {
+            let publicAddress = web3RPC.address.asString()
+            NotificationCenter.default.post(name: .authState, object: publicAddress)
+        } else {
+            NotificationCenter.default.post(name: .authState, object: nil)
         }
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2717BAE92C7D6B6300415E32 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717BAE82C7D6B6300415E32 /* Notification+Extension.swift */; };
 		271BBEF02C7C18ED00E24D81 /* web3.swift in Frameworks */ = {isa = PBXBuildFile; productRef = 271BBEEF2C7C18ED00E24D81 /* web3.swift */; };
 		271BBEFA2C7C31FA00E24D81 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBEF92C7C31FA00E24D81 /* AuthManager.swift */; };
 		271BBEFC2C7C328200E24D81 /* GlobalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271BBEFB2C7C328200E24D81 /* GlobalCoordinator.swift */; };
@@ -116,6 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2717BAE82C7D6B6300415E32 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		271BBEF92C7C31FA00E24D81 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		271BBEFB2C7C328200E24D81 /* GlobalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalCoordinator.swift; sourceTree = "<group>"; };
 		271BBEFD2C7C3FE400E24D81 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2717BAEA2C7D6C6500415E32 /* Web3Auth */ = {
+			isa = PBXGroup;
+			children = (
+				271BBEF92C7C31FA00E24D81 /* AuthManager.swift */,
+			);
+			path = Web3Auth;
+			sourceTree = "<group>";
+		};
 		2726EAEF2C79F291001ACFE2 /* Jazzicon */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +335,7 @@
 				506A73AA2C7944C300A62FC7 /* DateModels */,
 				2726EB062C7A269A001ACFE2 /* Models */,
 				506A740E2C7AE4C200A62FC7 /* Resources */,
+				2717BAEA2C7D6C6500415E32 /* Web3Auth */,
 				506A73D12C794D4A00A62FC7 /* Animation */,
 				506A73B42C7945AC00A62FC7 /* Contants */,
 				2726EAEF2C79F291001ACFE2 /* Jazzicon */,
@@ -363,6 +374,7 @@
 				506A73952C79433100A62FC7 /* UIButton+Extension.swift */,
 				506A73972C79435700A62FC7 /* Reusable+Extension.swift */,
 				506A73992C79437000A62FC7 /* UITextField+Extension.swift */,
+				2717BAE82C7D6B6300415E32 /* Notification+Extension.swift */,
 				506A739B2C79439100A62FC7 /* UserDefaulfs+Extension.swift */,
 				506A739D2C7943AF00A62FC7 /* UIViewController+Extension.swift */,
 			);
@@ -395,7 +407,6 @@
 		506A73A72C7944A000A62FC7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				271BBEF92C7C31FA00E24D81 /* AuthManager.swift */,
 				271BBF052C7C448400E24D81 /* ViewModelProtocol.swift */,
 				506A73E12C794F7300A62FC7 /* Main */,
 				277C259E2C7C00CC0034AC0A /* Auth */,
@@ -712,6 +723,7 @@
 				271BBF062C7C448400E24D81 /* ViewModelProtocol.swift in Sources */,
 				50D27C2F2C7B2D0900AAD3B4 /* SendTxDataModel.swift in Sources */,
 				271BBF022C7C406300E24D81 /* UserDataModel.swift in Sources */,
+				2717BAE92C7D6B6300415E32 /* Notification+Extension.swift in Sources */,
 				506A73F82C79555400A62FC7 /* HostCoordinator.swift in Sources */,
 				506A73BF2C7946E900A62FC7 /* BaseViewController.swift in Sources */,
 				506A73CE2C794C4100A62FC7 /* SettingViewController.swift in Sources */,
