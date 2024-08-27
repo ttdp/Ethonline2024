@@ -195,8 +195,8 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         view.text = "Balance"
         view.font = BSFont.Medium_28
         view.sizeToFit()
-        let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .upToDown)
-        view.textColor = UIColor.init(patternImage: gradientImage)
+        let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
+        view.textColor = UIColor(patternImage: gradientImage)
         return view
     }()
     

@@ -11,6 +11,8 @@ class SideMenuViewController: MenuViewController {
     
     var viewModel: SideMenuViewModel?
     
+    var selectedIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,13 +53,15 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     
     var controller: SideMenuViewController?
     
+    var selectedIndex = 0
+    
     let appName: UILabel = {
         let view = UILabel()
-        view.font = BSFont.Medium_30
+        view.font = BSFont.Bold_32
         view.text = "Ethereum Wallet"
         view.sizeToFit()
         let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
-        view.textColor = UIColor.init(patternImage: gradientImage)
+        view.textColor = UIColor(patternImage: gradientImage)
         return view
     }()
     
@@ -123,6 +127,7 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     
         let cell = tableView.dequeueReusable(at: indexPath) as SideTableCell
         cell.itemLabel.text = item
+        cell.isSelectedItem = selectedIndex == row
         
         if row == items.count - 1 {
             cell.separatorLine.isHidden = true
@@ -155,20 +160,45 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         controller?.showController(at: indexPath)
+        
+        selectedIndex = indexPath.row
+        reloadData()
     }
     
 }
 
 class SideTableCell: BaseTableViewCell {
+    
+    var isSelectedItem = false
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        marker.gradientBackground(from: Colors.gradientBlueFrom, to: Colors.gradientBlueTo, direction: .zeroToOne)
+        
+        let gradientImage = UIImage.gradientImageWithBounds(bounds: itemLabel.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
+
+        if isSelectedItem {
+            marker.isHidden = false
+            itemLabel.textColor = UIColor(patternImage: gradientImage)
+        } else {
+            marker.isHidden = true
+            itemLabel.textColor = Colors.label_primary
+        }
+    }
+    
+    let marker: UIView = {
+        let view = UIView()
+        return view
+    }()
  
-    var itemLabel: UILabel = {
+    let itemLabel: UILabel = {
         let label = UILabel()
-        label.font = BSFont.Medium_24
-        label.textColor = Colors.label_primary
+        label.font = BSFont.Medium_28
         return label
     }()
     
-    var separatorLine: UIView = {
+    let separatorLine: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.separator
         return view
@@ -177,13 +207,18 @@ class SideTableCell: BaseTableViewCell {
     override func setUpViews() {
         backgroundColor = Colors.groupedBackground_secondary
         
+        addSubview(marker)
+        addConstts(format: "H:|[v0(8)]", views: marker)
+        addConstts(format: "V:|[v0]|", views: marker)
+        
         addSubview(itemLabel)
         addConstts(format: "H:[v0]", views: itemLabel)
+        addConstts(format: "V:[v0]", views: itemLabel)
         itemLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        addConstts(format: "V:|[v0]|", views: itemLabel)
+        itemLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         addSubview(separatorLine)
-        addConstts(format: "H:|-20-[v0]|", views: separatorLine)
+        addConstts(format: "H:|-10-[v0]|", views: separatorLine)
         addConstts(format: "V:[v0(0.5)]|", views: separatorLine)
     }
     

@@ -36,13 +36,15 @@ struct BSFont {
     static let Medium_22 = Fonts.Roboto.Medium_22
     static let Medium_24 = Fonts.Roboto.Medium_24
     static let Medium_28 = Fonts.Roboto.Medium_28
-    static let Medium_30 = Fonts.Roboto.Medium_30
-    static let Medium_60 = Fonts.Roboto.Medium_60
+    static let Medium_32 = Fonts.Roboto.Medium_32
     static let Medium_40 = Fonts.Roboto.Medium_40
+    static let Medium_60 = Fonts.Roboto.Medium_60
     static let Regular_40 = Fonts.Roboto.Regular_40
     static let Regular_14 = Fonts.Roboto.Regular_14
     static let Regular_15 = Fonts.Roboto.Regular_15
     static let Regular_22 = Fonts.Roboto.Regular_22
+    static let Bold_28 = Fonts.Roboto.Bold_28
+    static let Bold_32 = Fonts.Roboto.Bold_32
 }
 
 struct Fonts {
@@ -102,7 +104,7 @@ struct Fonts {
         static let Medium_22 = UIFont(name: Fonts.Roboto_Medium, size: 22)
         static let Medium_24 = UIFont(name: Fonts.Roboto_Medium, size: 24)
         static let Medium_28 = UIFont(name: Fonts.Roboto_Medium, size: 28)
-        static let Medium_30 = UIFont(name: Fonts.Roboto_Medium, size: 30)
+        static let Medium_32 = UIFont(name: Fonts.Roboto_Medium, size: 32)
         static let Medium_40 = UIFont(name: Fonts.Roboto_Medium, size: 40)
         static let Medium_60 = UIFont(name: Fonts.Roboto_Medium, size: 60)
         
@@ -114,6 +116,8 @@ struct Fonts {
         static let Bold_17 = UIFont(name: Fonts.Roboto_Bold, size: 17)
         static let Bold_18 = UIFont(name: Fonts.Roboto_Bold, size: 18)
         static let Bold_25 = UIFont(name: Fonts.Roboto_Bold, size: 25)
+        static let Bold_28 = UIFont(name: Fonts.Roboto_Bold, size: 28)
+        static let Bold_32 = UIFont(name: Fonts.Roboto_Bold, size: 32)
     }
     
     struct AvenirNext {
