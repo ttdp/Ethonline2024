@@ -9,6 +9,9 @@ import UIKit
 
 struct Colors {
     
+    static let gradientBlueFrom = UIColor(hex: "#0061ff")
+    static let gradientBlueTo = UIColor(hex: "#60efff")
+    
     static let systemFill = UIColor.systemFill
     static let systemGray = UIColor.systemGray
     static let separator = UIColor.separator

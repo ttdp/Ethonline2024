@@ -36,16 +36,6 @@ class SideMenuViewController: MenuViewController {
     
     // MARK: - Method
     
-    @objc func updateAvatar(notification: Notification) {
-//        guard let avatarURL = notification.object as? String else {
-//            return
-//        }
-        
-//        let url = URL(string: SERVER_BASE + avatarURL)
-//
-//        tableView.avatarView.kf.setImage(with: url, options: [.forceRefresh])
-    }
-    
     func showController(at indexPath: IndexPath) {
         guard let hostViewController = self.menuContainerViewController else {
             return
@@ -61,25 +51,49 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     
     var controller: SideMenuViewController?
     
-    lazy var avatarView: UIImageView = {
-        let avatar = UIImageView()
-        avatar.layer.cornerRadius = 66
-        avatar.layer.masksToBounds = true
-//        let avatarURL = Default.getUser()?.avatar ?? ""
-//        let url = URL(string: SERVER_BASE + avatarURL)
-//        
-//        let pngSerializer = FormatIndicatedCacheSerializer.png
-//        avatar.kf.indicatorType = .activity
-//        avatar.kf.setImage(with: url, placeholder: Images.avatar_default, options: [.cacheSerializer(pngSerializer)])
-        return avatar
+    let appName: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.Medium_30
+        view.text = "Ethereum Wallet"
+        view.sizeToFit()
+        let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
+        view.textColor = UIColor.init(patternImage: gradientImage)
+        return view
+    }()
+    
+    let verison: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.label
+        view.text = "Version 0.01"
+        view.textColor = Colors.label_secondary
+        return view
+    }()
+    
+    lazy var walletIcon: UIImageView = {
+        let view = UIImageView()
+        let image = Images.Ethereum!
+        let gradientImage = image.drawLinearGradient(
+            colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor],
+                direction: .zeroToOne)
+        view.image = gradientImage
+        return view
     }()
     
     lazy var avatarHeader: UIView = {
         let view = UIView()
-        view.addSubview(avatarView)
-        view.addConstts(format: "H:[v0(132)]", views: avatarView)
-        view.addConstts(format: "V:|-34-[v0(132)]-34-|", views: avatarView)
-        avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        view.addSubview(appName)
+        view.addConstts(format: "V:|-20-[v0]", views: appName)
+        appName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        view.addSubview(walletIcon)
+        view.addConstts(format: "H:[v0(160)]", views: walletIcon)
+        view.addConstts(format: "V:|-80-[v0(160)]-60-|", views: walletIcon)
+        walletIcon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        view.addSubview(verison)
+        view.addConstts(format: "V:[v0]-15-|", views: verison)
+        verison.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
         return view
     }()
     
@@ -93,7 +107,7 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - DataSource & Delegate
     
-    let items = ["Balance", "NFT", "Transactions", "Settings"]
+    let items = ["Balance", "NFT"]
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -109,13 +123,18 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     
         let cell = tableView.dequeueReusable(at: indexPath) as SideTableCell
         cell.itemLabel.text = item
-        cell.separatorLine.isHidden = false
+        
+        if row == items.count - 1 {
+            cell.separatorLine.isHidden = true
+        } else {
+            cell.separatorLine.isHidden = false
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -123,7 +142,7 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+        return 300
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -144,8 +163,8 @@ class SideTableCell: BaseTableViewCell {
  
     var itemLabel: UILabel = {
         let label = UILabel()
-        label.font = BSFont.secondaryMedium
-        label.textColor = Colors.label_secondary
+        label.font = BSFont.Medium_24
+        label.textColor = Colors.label_primary
         return label
     }()
     

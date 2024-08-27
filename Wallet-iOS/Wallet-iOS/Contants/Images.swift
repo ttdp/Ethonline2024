@@ -18,6 +18,10 @@ struct Images {
     
     // MARK: - Currency
     
+    static let Ethereum = UIImage(named: "ethereum")
+    static let MenuIcon = UIImage(named: "menu_icon")
+    static let ScanIcon = UIImage(named: "scan_icon")
+    
     static let ETH = UIImage(named: "ETH")!
     static let ARB = UIImage(named: "ARB")!
     static let OPT = UIImage(named: "OPT")!

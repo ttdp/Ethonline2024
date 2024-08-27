@@ -14,8 +14,6 @@ class HostCoordinator: AppCoordinator {
     var sideMenuCoordinator: SideMenuCoordinator?
     var balanceCoordinator: BalanceCoordinator?
     var nftCoordinator: NFTCoordinator?
-    var txCoordinator: TxCoordinator?
-    var settingCoordinator: SettingCoordinator?
     
     override func start() {
         let viewModel = HostViewModel()
@@ -30,17 +28,11 @@ class HostCoordinator: AppCoordinator {
         balanceCoordinator?.start()
         nftCoordinator = NFTCoordinator(window: window)
         nftCoordinator?.start()
-        txCoordinator = TxCoordinator(window: window)
-        txCoordinator?.start()
-        settingCoordinator = SettingCoordinator(window: window)
-        settingCoordinator?.start()
         
         hostViewController?.sideMenuViewController = sideMenuCoordinator?.sideMenuViewController
         hostViewController?.balanceViewController = balanceCoordinator?.balanceViewController
         hostViewController?.nftViewController = nftCoordinator?.nftViewController
-        hostViewController?.txViewController = txCoordinator?.txViewController
-        hostViewController?.settingViewController = settingCoordinator?.settingViewController
-        
+       
         guard let host = hostViewController else { return }
         
         window.rootViewController = UINavigationController(rootViewController: host)

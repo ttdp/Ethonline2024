@@ -14,8 +14,6 @@ class HostViewController: MenuContainerViewController {
     var sideMenuViewController: SideMenuViewController?
     var balanceViewController: BalanceViewController?
     var nftViewController: NFTViewController?
-    var txViewController: TxViewController?
-    var settingViewController: SettingViewController?
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -58,16 +56,11 @@ class HostViewController: MenuContainerViewController {
     }
     
     private func contentControllers() -> [UIViewController] {
-        guard
-            let balance = balanceViewController,
-            let nft = nftViewController,
-            let tx = txViewController,
-            let setting = settingViewController
-        else {
+        guard let balance = balanceViewController, let nft = nftViewController else {
             return []
         }
         
-        return [balance, nft, tx, setting]
+        return [balance, nft]
     }
     
 }

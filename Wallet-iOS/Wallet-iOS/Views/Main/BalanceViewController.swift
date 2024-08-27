@@ -34,58 +34,7 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     lazy var naviView: BaseView = {
         let view = BaseView()
         view.backgroundColor = .lightGray
-        return view
-    }()
-    
-    lazy var menu: UIButton = {
-        let button = UIButton()
-        button.setTitle("Balance", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(handleSide), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var scanButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "qrcode.viewfinder"), for: .normal)
-        button.addTarget(self, action: #selector(handleScan), for: .touchUpInside)
-        return button
-    }()
-    
-    let avatarView: JazziconImageView = {
-        let view = JazziconImageView()
-        view.layer.cornerRadius = 40
-        view.clipsToBounds = true
-        return view
-    }()
-    
-    let addressLabel: UILabel = {
-        let view = UILabel()
-        view.font = BSFont.label
-        view.textColor = Colors.label_secondary
-        view.text = testAddress
-        return view
-    }()
-    
-    lazy var authButton: UIButton = {
-        let view = UIButton(type: .system)
-        view.setTitle("Auth", for: .normal)
-        view.setTitleColor(.systemBlue, for: .normal)
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.systemBlue.cgColor
-        view.addTarget(self, action: #selector(handleAuth), for: .touchUpInside)
-        return view
-    }()
-    
-    lazy var userButton: UIButton = {
-        let view = UIButton(type: .system)
-        view.setTitle("User", for: .normal)
-        view.setTitleColor(.systemBlue, for: .normal)
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.systemBlue.cgColor
-        view.addTarget(self, action: #selector(handleUser), for: .touchUpInside)
+        view.alpha = 0
         return view
     }()
     
@@ -101,40 +50,11 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         
         view.addSubview(tableView)
         view.addConstts(format: "H:|[v0]|", views: tableView)
-        view.addConstts(format: "V:|-184-[v0]|", views: tableView)
+        view.addConstts(format: "V:|[v0]|", views: tableView)
         
         view.addSubview(naviView)
         view.addConstts(format: "H:|[v0]|", views: naviView)
         view.addConstts(format: "V:|[v0(84)]", views: naviView)
-        
-        view.addSubview(avatarView)
-        view.addConstts(format: "H:[v0(80)]", views: avatarView)
-        view.addConstts(format: "V:[v0(80)]", views: avatarView)
-        avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        avatarView.topAnchor.constraint(equalTo: naviView.bottomAnchor, constant: 20).isActive = true
-        
-        view.addSubview(addressLabel)
-        view.addConstts(format: "H:[v0]", views: addressLabel)
-        addressLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor).isActive = true
-        addressLabel.centerXAnchor.constraint(equalTo: avatarView.centerXAnchor).isActive = true
-        
-        view.addSubview(authButton)
-        view.addConstts(format: "H:|-20-[v0(80)]", views: authButton)
-        view.addConstts(format: "V:[v0(40)]", views: authButton)
-        authButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
-        
-        view.addSubview(userButton)
-        view.addConstts(format: "H:[v0(80)]-20-|", views: userButton)
-        view.addConstts(format: "V:[v0(40)]", views: userButton)
-        userButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
-        
-        naviView.addSubview(menu)
-        naviView.addConstts(format: "H:|-10-[v0]", views: menu)
-        naviView.addConstts(format: "V:[v0]|", views: menu)
-        
-        naviView.addSubview(scanButton)
-        naviView.addConstts(format: "H:[v0]-15-|", views: scanButton)
-        naviView.addConstts(format: "V:[v0]|", views: scanButton)
     }
     
     // MARK: - Method
@@ -185,13 +105,13 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     
     @objc func handleAuthState(notification: Notification) {
         if let address = notification.object as? String {
-            addressLabel.text = address
+            tableView.addressLabel.text = address
             updateAvatar(address)
             loadTokenBalance(address: address)
             
-            authButton.isHidden = true
+            tableView.authButton.isHidden = true
         } else {
-            authButton.isHidden = false
+            tableView.authButton.isHidden = false
         }
     }
     
@@ -217,7 +137,7 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         let hexSeed = address.suffix(8)
         guard let decimalSeed = Int(hexSeed, radix: 16) else { return }
         
-        avatarView.seed = UInt32(decimalSeed)
+        tableView.avatarView.seed = UInt32(decimalSeed)
     }
     
 }
@@ -246,6 +166,76 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
     // MARK: - View
     
     var refresher: UIRefreshControl!
+    
+    lazy var menuButton: UIButton = {
+        let button = UIButton()
+        let image = Images.MenuIcon!
+        let gradientImage = image.drawLinearGradient(
+            colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor],
+                direction: .zeroToOne)
+        button.setImage(gradientImage, for: .normal)
+        button.addTarget(self, action: #selector(handleSide), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var scanButton: UIButton = {
+        let button = UIButton()
+        let config = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
+        let image = UIImage(systemName: "qrcode.viewfinder", withConfiguration: config)!
+        let gradientImage = image.drawLinearGradient(
+                colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor],
+                direction: .oneZeroToZeroOne)
+        button.setImage(gradientImage, for: .normal)
+        button.addTarget(self, action: #selector(controller.handleScan), for: .touchUpInside)
+        return button
+    }()
+    
+    let titleLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Balance"
+        view.font = BSFont.Medium_28
+        view.sizeToFit()
+        let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .upToDown)
+        view.textColor = UIColor.init(patternImage: gradientImage)
+        return view
+    }()
+    
+    let avatarView: JazziconImageView = {
+        let view = JazziconImageView()
+        view.layer.cornerRadius = 40
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let addressLabel: UILabel = {
+        let view = UILabel()
+        view.font = BSFont.label
+        view.textColor = Colors.label_secondary
+        view.text = testAddress
+        return view
+    }()
+    
+    lazy var authButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.setTitle("Auth", for: .normal)
+        view.setTitleColor(.systemBlue, for: .normal)
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.addTarget(self, action: #selector(controller.handleAuth), for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var userButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.setTitle("User", for: .normal)
+        view.setTitleColor(.systemBlue, for: .normal)
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.addTarget(self, action: #selector(controller.handleUser), for: .touchUpInside)
+        return view
+    }()
     
     override func setUpViews() {
         backgroundColor = Colors.groupedBackground_primary
@@ -300,11 +290,46 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        let view = UIView()
+        
+        view.addSubview(menuButton)
+        view.addConstts(format: "H:|-(-6)-[v0(44)]", views: menuButton)
+        view.addConstts(format: "V:|[v0(44)]", views: menuButton)
+        
+        view.addSubview(titleLabel)
+        view.addConstts(format: "H:[v0]", views: titleLabel)
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: menuButton.centerYAnchor).isActive = true
+        
+        view.addSubview(scanButton)
+        view.addConstts(format: "H:[v0(44)]-(-6)-|", views: scanButton)
+        view.addConstts(format: "V:|[v0(44)]", views: scanButton)
+        
+        view.addSubview(avatarView)
+        view.addConstts(format: "H:[v0(80)]", views: avatarView)
+        view.addConstts(format: "V:|-60-[v0(80)]", views: avatarView)
+        avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        view.addSubview(addressLabel)
+        view.addConstts(format: "H:[v0]", views: addressLabel)
+        addressLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor).isActive = true
+        addressLabel.centerXAnchor.constraint(equalTo: avatarView.centerXAnchor).isActive = true
+        
+        view.addSubview(authButton)
+        view.addConstts(format: "H:|[v0(80)]", views: authButton)
+        view.addConstts(format: "V:[v0(40)]", views: authButton)
+        authButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
+        
+        view.addSubview(userButton)
+        view.addConstts(format: "H:[v0(80)]|", views: userButton)
+        view.addConstts(format: "V:[v0(40)]", views: userButton)
+        userButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor).isActive = true
+        
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return 160
     }
     
 }

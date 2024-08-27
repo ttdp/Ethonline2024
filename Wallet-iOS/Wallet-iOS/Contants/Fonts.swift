@@ -35,7 +35,9 @@ struct BSFont {
     static let Medium_20 = Fonts.Roboto.Medium_20
     static let Medium_22 = Fonts.Roboto.Medium_22
     static let Medium_24 = Fonts.Roboto.Medium_24
+    static let Medium_28 = Fonts.Roboto.Medium_28
     static let Medium_30 = Fonts.Roboto.Medium_30
+    static let Medium_60 = Fonts.Roboto.Medium_60
     static let Medium_40 = Fonts.Roboto.Medium_40
     static let Regular_40 = Fonts.Roboto.Regular_40
     static let Regular_14 = Fonts.Roboto.Regular_14
@@ -99,8 +101,10 @@ struct Fonts {
         static let Medium_20 = UIFont(name: Fonts.Roboto_Medium, size: 20)
         static let Medium_22 = UIFont(name: Fonts.Roboto_Medium, size: 22)
         static let Medium_24 = UIFont(name: Fonts.Roboto_Medium, size: 24)
+        static let Medium_28 = UIFont(name: Fonts.Roboto_Medium, size: 28)
         static let Medium_30 = UIFont(name: Fonts.Roboto_Medium, size: 30)
         static let Medium_40 = UIFont(name: Fonts.Roboto_Medium, size: 40)
+        static let Medium_60 = UIFont(name: Fonts.Roboto_Medium, size: 60)
         
         static let MediumItalic_16 = UIFont(name: Fonts.Roboto_MediumItalic, size: 16)
         static let MediumItalic_17 = UIFont(name: Fonts.Roboto_MediumItalic, size: 17)
