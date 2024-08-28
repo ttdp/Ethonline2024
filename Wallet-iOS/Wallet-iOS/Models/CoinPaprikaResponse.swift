@@ -36,5 +36,5 @@ struct QuoteDetails: Codable {
 struct TokenQuota {
     let name: String
     let price: Double
-    let change_15m: Double
+    let change_24h: Double
 }

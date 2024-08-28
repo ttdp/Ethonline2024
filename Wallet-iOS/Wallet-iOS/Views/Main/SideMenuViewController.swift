@@ -208,7 +208,7 @@ class SideTableCell: BaseTableViewCell {
         backgroundColor = Colors.groupedBackground_secondary
         
         addSubview(marker)
-        addConstts(format: "H:|[v0(7)]", views: marker)
+        addConstts(format: "H:|[v0(8)]", views: marker)
         addConstts(format: "V:|[v0]|", views: marker)
         
         addSubview(itemLabel)

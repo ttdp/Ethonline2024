@@ -41,3 +41,58 @@ extension UIView {
     }
     
 }
+
+class GradientBorderView: UIView {
+    
+    private var gradientLayer: CAGradientLayer!
+    private var borderWidth: CGFloat = 15
+    private var animationDuration: TimeInterval = 1
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupGradientLayer()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupGradientLayer() {
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        gradientLayer.cornerRadius = 10
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
+        maskLayer.fillColor = UIColor.clear.cgColor
+        maskLayer.strokeColor = UIColor.white.cgColor
+        maskLayer.lineWidth = borderWidth
+        
+        gradientLayer.mask = maskLayer
+        
+        layer.addSublayer(gradientLayer)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer.frame = bounds
+        gradientLayer.mask?.frame = bounds
+        (gradientLayer.mask as? CAShapeLayer)?.path = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
+    }
+    
+    func animateGradient() {
+        let animation = CABasicAnimation(keyPath: "colors")
+        animation.fromValue = gradientLayer.colors
+        animation.toValue = [Colors.gradientBlueTo.cgColor, UIColor(hex: "0ab6f8").cgColor, Colors.gradientBlueFrom.cgColor]
+        animation.duration = animationDuration
+        animation.autoreverses = true
+        animation.repeatCount = .infinity
+        gradientLayer.add(animation, forKey: "gradientAnimation")
+    }
+    
+}

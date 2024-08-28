@@ -93,15 +93,12 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     }
     
     @objc func handleAuthState(notification: Notification) {
-        if let address = notification.object as? String {
-            tableView.updateAvatar(address)
-            tableView.addressLabel.text = address
-            tableView.authButton.isHidden = true
+        guard let address = notification.object as? String else { return }
+            
+        tableView.updateAvatar(address)
+        tableView.addressLabel.text = address
 
-            loadTokenBalance(address: address)
-        } else {
-            tableView.authButton.isHidden = false
-        }
+        loadTokenBalance(address: address)
     }
     
 }
@@ -130,7 +127,7 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         let image = UIImage(systemName: "qrcode.viewfinder", withConfiguration: config)!
         let gradientImage = image.drawLinearGradient(
                 colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor],
-                direction: .oneZeroToZeroOne)
+                direction: .zeroToOne)
         button.setImage(gradientImage, for: .normal)
         button.addTarget(self, action: #selector(handleScan), for: .touchUpInside)
         return button
@@ -161,25 +158,27 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         return view
     }()
     
-    lazy var authButton: UIButton = {
-        let view = UIButton(type: .system)
+    lazy var authButton: GradientBorderButton = {
+        let view = GradientBorderButton(fromColor: Colors.gradientBlueFrom, toColor: Colors.gradientBlueTo, direction: .zeroToOne)
         view.setTitle("Auth", for: .normal)
-        view.setTitleColor(.systemBlue, for: .normal)
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.sizeToFit()
+        let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
+        view.setTitleColor(UIColor(patternImage: gradientImage), for: .normal)
+        view.layer.cornerRadius = 10
         view.addTarget(self, action: #selector(handleAuth), for: .touchUpInside)
+        view.addAnimation()
         return view
     }()
     
-    lazy var userButton: UIButton = {
-        let view = UIButton(type: .system)
+    lazy var userButton: GradientBorderButton = {
+        let view = GradientBorderButton(fromColor: Colors.gradientBlueFrom, toColor: Colors.gradientBlueTo, direction: .zeroToOne)
         view.setTitle("User", for: .normal)
-        view.setTitleColor(.systemBlue, for: .normal)
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.sizeToFit()
+        let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
+        view.setTitleColor(UIColor(patternImage: gradientImage), for: .normal)
+        view.layer.cornerRadius = 10
         view.addTarget(self, action: #selector(handleUser), for: .touchUpInside)
+        view.addAnimation()
         return view
     }()
     
@@ -228,6 +227,13 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
     
     func qrScanner(_ controller: UIViewController, didScanQRCodeWithResult result: String) {
         updateAvatar(result)
+        
+        guard let colonIndex = result.firstIndex(of: ":") else { return }
+        let startIndex = result.index(colonIndex, offsetBy: 1)
+        let address = String(result.suffix(from: startIndex))
+        
+        self.controller.loadTokenBalance(address: address)
+        addressLabel.text = address
     }
     
     func qrScanner(_ controller: UIViewController, didFailWithError error: SwiftQRCodeScanner.QRCodeError) {
@@ -255,11 +261,11 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         cell.tokenIcon.image = token.icon
         cell.tokenName.text = token.name
         cell.tokenPrice.text = token.formattedPrice
-        cell.tokenChange .text = token.changeSinceLast15Minutes
+        cell.tokenChange .text = token.change24Hours
         cell.balanceValue.text = token.formattedBalance
         cell.balancePrice.text = token.ballanceValue
         
-        if token.changeSinceLast15Minutes?.hasPrefix("+") ?? false {
+        if token.change24Hours?.hasPrefix("+") ?? false {
             cell.tokenChange.textColor = .systemGreen
         } else {
             cell.tokenChange.textColor = .systemRed

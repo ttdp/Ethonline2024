@@ -37,7 +37,6 @@ class Web3RPC : ObservableObject {
     
     func getAccounts() {
         self.publicAddress = address.asString()
-        print(address.asString())
     }
     
     func checkLatestBlockChanged() async -> Bool {

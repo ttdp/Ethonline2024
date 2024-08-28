@@ -42,9 +42,9 @@ class BalanceDataModel: BalanceDataModelProtocol {
             case .success(let coinPaprikaResponse):
                 let currencyName = coinPaprikaResponse.name
                 let currencyPrice = coinPaprikaResponse.quotes.USD.price
-                let currencyChange = coinPaprikaResponse.quotes.USD.percent_change_15m
+                let currencyChange = coinPaprikaResponse.quotes.USD.percent_change_24h
                 
-                completion(TokenQuota(name: currencyName, price: currencyPrice, change_15m: currencyChange))
+                completion(TokenQuota(name: currencyName, price: currencyPrice, change_24h: currencyChange))
             case .failure(let error):
                 print("Request failed with error: \(error.localizedDescription)")
             }
@@ -159,7 +159,7 @@ extension Double {
         formatter.maximumFractionDigits = 2 // Adjust the number of decimal places if needed
         
         // Format the change
-        let formattedChange = formatter.string(from: NSNumber(value: abs(self)))
+        let formattedChange = formatter.string(from: NSNumber(value: abs(self / 100)))
         
         // Determine the sign
         let sign = self >= 0 ? "+" : "-"

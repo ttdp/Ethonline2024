@@ -13,6 +13,8 @@ class NFTViewController: BaseViewController<NFTViewModel>, SideMenuItemContent {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -20,7 +22,7 @@ class NFTViewController: BaseViewController<NFTViewModel>, SideMenuItemContent {
     }
     
     lazy var tableView: NFTViewTableView = {
-        let tableView = NFTViewTableView(frame: .zero, style: .insetGrouped)
+        let tableView = NFTViewTableView(frame: .zero, style: .grouped)
         tableView.controller = self
         tableView.viewModel = self.viewModel
         return tableView
@@ -28,7 +30,7 @@ class NFTViewController: BaseViewController<NFTViewModel>, SideMenuItemContent {
     
     override func setUpViews() {
         view.backgroundColor = Colors.groupedBackground_primary
-        
+
         view.addSubview(tableView)
         view.addConstts(format: "H:|[v0]|", views: tableView)
         view.addConstts(format: "V:|[v0]|", views: tableView)
@@ -103,7 +105,7 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
         let view = UIView()
         
         view.addSubview(menuButton)
-        view.addConstts(format: "H:|-(-6)-[v0(44)]", views: menuButton)
+        view.addConstts(format: "H:|-14-[v0(44)]", views: menuButton)
         view.addConstts(format: "V:|[v0(44)]", views: menuButton)
         
         view.addSubview(titleLabel)
@@ -122,18 +124,40 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
 
 class NFTViewTableCell: BaseTableViewCell {
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientView.animateGradient()
+    }
+    
+    let gradientView: GradientBorderView = {
+        let view = GradientBorderView()
+        view.layer.cornerRadius = 10
+        return view
+    }()
+
     let nftImage: UIImageView = {
         let view = UIImageView()
         view.image = Images.BigHugs
         view.contentMode = .scaleAspectFit
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
         return view
     }()
     
     override func setUpViews() {
-        contentView.addSubview(nftImage)
-        contentView.addConstts(format: "H:|[v0]|", views: nftImage)
-        let size = Int(Screen.width - 40)
-        contentView.addConstts(format: "V:|[v0(\(size))]|", views: nftImage)
+        backgroundColor = Colors.groupedBackground_primary
+
+        addSubview(gradientView)
+        addConstts(format: "H:|-20-[v0]-20-|", views: gradientView)
+        let height = Screen.width - 40
+        addConstts(format: "V:|[v0(\(height))]|", views: gradientView)
+        gradientView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        gradientView.addSubview(nftImage)
+        gradientView.addConstts(format: "H:|-5-[v0]-5-|", views: nftImage)
+        gradientView.addConstts(format: "V:|-5-[v0]-5-|", views: nftImage)
+        gradientView.animateGradient()
     }
-    
+
 }

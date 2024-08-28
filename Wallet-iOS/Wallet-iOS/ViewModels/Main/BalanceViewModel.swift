@@ -34,7 +34,7 @@ struct CryptoCurrency {
     let icon: UIImage
     var price: Double?
     var formattedPrice: String?
-    var changeSinceLast15Minutes: String?
+    var change24Hours: String?
     var balanceInEther: Double?
     var formattedBalance: String?
     var ballanceValue: String?
@@ -141,7 +141,7 @@ class BalanceViewModel: ViewModelProtocol {
                 var _balance = balance
                 _balance.price = quota.price
                 _balance.formattedPrice = quota.price.asUSDollar()
-                _balance.changeSinceLast15Minutes = quota.change_15m.asPercentage()
+                _balance.change24Hours = quota.change_24h.asPercentage()
                 if let balanceInEther = _balance.balanceInEther {
                     let totalValue = quota.price * balanceInEther
                     _balance.ballanceValue = totalValue.asUSDollar()
