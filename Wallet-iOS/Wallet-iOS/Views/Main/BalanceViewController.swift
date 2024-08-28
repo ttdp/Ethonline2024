@@ -94,60 +94,19 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
     
     @objc func handleAuthState(notification: Notification) {
         if let address = notification.object as? String {
+            tableView.updateAvatar(address)
             tableView.addressLabel.text = address
-            updateAvatar(address)
-            loadTokenBalance(address: address)
-            
             tableView.authButton.isHidden = true
+
+            loadTokenBalance(address: address)
         } else {
             tableView.authButton.isHidden = false
         }
     }
     
-    @objc func handleAuth() {
-        viewModel.showAuth()
-    }
-    
-    @objc func handleUser() {
-        viewModel.showUser { hasUser in
-            if !hasUser {
-                self.warning("No auth user found.")
-            }
-        }
-    }
-    
-    @objc func handleScan() {
-        let scanner = QRCodeScannerController()
-        scanner.delegate = self
-        self.present(scanner, animated: true, completion: nil)
-    }
-    
-    func updateAvatar(_ address: String) {
-        let hexSeed = address.suffix(8)
-        guard let decimalSeed = Int(hexSeed, radix: 16) else { return }
-        
-        tableView.avatarView.seed = UInt32(decimalSeed)
-    }
-    
 }
 
-extension BalanceViewController: QRScannerCodeDelegate {
-    
-    func qrScanner(_ controller: UIViewController, didScanQRCodeWithResult result: String) {
-        updateAvatar(result)
-    }
-    
-    func qrScanner(_ controller: UIViewController, didFailWithError error: SwiftQRCodeScanner.QRCodeError) {
-        print(error.localizedDescription)
-    }
-    
-    func qrScannerDidCancel(_ controller: UIViewController) {
-        print(#function)
-    }
-    
-}
-
-class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
+class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate, QRScannerCodeDelegate {
     
     weak var controller: BalanceViewController!
     weak var viewModel: BalanceViewModel!
@@ -173,7 +132,7 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
                 colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor],
                 direction: .oneZeroToZeroOne)
         button.setImage(gradientImage, for: .normal)
-        button.addTarget(self, action: #selector(controller.handleScan), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleScan), for: .touchUpInside)
         return button
     }()
     
@@ -209,7 +168,7 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.systemBlue.cgColor
-        view.addTarget(self, action: #selector(controller.handleAuth), for: .touchUpInside)
+        view.addTarget(self, action: #selector(handleAuth), for: .touchUpInside)
         return view
     }()
     
@@ -220,7 +179,7 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.systemBlue.cgColor
-        view.addTarget(self, action: #selector(controller.handleUser), for: .touchUpInside)
+        view.addTarget(self, action: #selector(handleUser), for: .touchUpInside)
         return view
     }()
     
@@ -236,6 +195,47 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
     
     @objc func handleSide() {
         controller.handleSide()
+    }
+    
+    @objc func handleScan() {
+        let scanner = QRCodeScannerController()
+        scanner.delegate = self
+        controller.present(scanner, animated: true, completion: nil)
+    }
+    
+    @objc func handleAuth() {
+        viewModel.showAuth()
+    }
+
+    @objc func handleUser() {
+        viewModel.showUser { hasUser in
+            if !hasUser {
+                self.warning("No auth user found.")
+            }
+        }
+    }
+    
+    // MARK: - Method
+    
+    func updateAvatar(_ address: String) {
+        let hexSeed = address.suffix(8)
+        guard let decimalSeed = Int(hexSeed, radix: 16) else { return }
+        
+        avatarView.seed = UInt32(decimalSeed)
+    }
+    
+    // MARK: - QRScannerCode Delegate
+    
+    func qrScanner(_ controller: UIViewController, didScanQRCodeWithResult result: String) {
+        updateAvatar(result)
+    }
+    
+    func qrScanner(_ controller: UIViewController, didFailWithError error: SwiftQRCodeScanner.QRCodeError) {
+        print(error.localizedDescription)
+    }
+    
+    func qrScannerDidCancel(_ controller: UIViewController) {
+        print(#function)
     }
     
     // MARK: - TableView DataSource

@@ -12,10 +12,18 @@ class AuthManager {
     
     static let shared = AuthManager()
     
-    private init() {}
-    
-    let clientId = "BMOysTorFajRIKzocJdtuXd_VFuywM5pkByV2NZ2arhqYSRv_p92rraMlgUE1G6dfaCS0SNX52vNvBHb4l9ZRWc"
-    let network: Network = .sapphire_devnet
+    let clientId: String
+    let network: Network
+
+    private init() {
+        let infoPlistPath = Bundle.main.url(forResource: "Web3Auth", withExtension: "plist")!
+        let infoPlistData = try! Data(contentsOf: infoPlistPath)
+                
+        let dict = try! PropertyListSerialization.propertyList(from: infoPlistData, options: [], format: nil) as! [String: Any]
+        
+        clientId = dict["ClientId"] as! String
+        network = Network(rawValue: dict["Network"] as! String)!
+    }
     
     var web3Auth: Web3Auth?
     

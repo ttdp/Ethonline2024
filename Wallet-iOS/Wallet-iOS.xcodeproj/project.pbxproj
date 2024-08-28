@@ -29,16 +29,15 @@
 		27451DC72C7BC58600768A67 /* Web3Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DC62C7BC58600768A67 /* Web3Auth */; };
 		27451DCA2C7BC67100768A67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DC92C7BC67100768A67 /* Alamofire */; };
 		27451DCF2C7BC68A00768A67 /* SwiftQRCodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DCE2C7BC68A00768A67 /* SwiftQRCodeScanner */; };
-		277C25972C7BFA250034AC0A /* Web3Auth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 277C25962C7BFA250034AC0A /* Web3Auth.plist */; };
 		277C259D2C7C00C70034AC0A /* AuthDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C259C2C7C00C70034AC0A /* AuthDataModel.swift */; };
 		277C25A02C7C00D80034AC0A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C259F2C7C00D80034AC0A /* AuthViewModel.swift */; };
 		277C25A22C7C014F0034AC0A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A12C7C014F0034AC0A /* AuthViewController.swift */; };
 		277C25A52C7C022C0034AC0A /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A42C7C022C0034AC0A /* AuthCoordinator.swift */; };
 		277C25A72C7C0A430034AC0A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A62C7C0A430034AC0A /* LoginView.swift */; };
 		277C25AB2C7C17CC0034AC0A /* Web3PRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25AA2C7C17CC0034AC0A /* Web3PRC.swift */; };
+		27E078B32C7EBD1000DF12C8 /* Web3Auth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27E078B22C7EBD1000DF12C8 /* Web3Auth.plist */; };
 		506A73602C79403800A62FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A735F2C79403800A62FC7 /* AppDelegate.swift */; };
 		506A73622C79403800A62FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73612C79403800A62FC7 /* SceneDelegate.swift */; };
-		506A73642C79403800A62FC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73632C79403800A62FC7 /* ViewController.swift */; };
 		506A73692C79403900A62FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506A73682C79403900A62FC7 /* Assets.xcassets */; };
 		506A736C2C79403900A62FC7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 506A736B2C79403900A62FC7 /* Base */; };
 		506A73772C79403900A62FC7 /* Wallet_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A73762C79403900A62FC7 /* Wallet_iOSTests.swift */; };
@@ -127,17 +126,16 @@
 		2726EAF82C79F412001ACFE2 /* Mersenne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mersenne.swift; sourceTree = "<group>"; };
 		2726EB012C7A0F27001ACFE2 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
 		2726EB072C7A26A7001ACFE2 /* NFTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTModel.swift; sourceTree = "<group>"; };
-		277C25962C7BFA250034AC0A /* Web3Auth.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Web3Auth.plist; sourceTree = "<group>"; };
 		277C259C2C7C00C70034AC0A /* AuthDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataModel.swift; sourceTree = "<group>"; };
 		277C259F2C7C00D80034AC0A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		277C25A12C7C014F0034AC0A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		277C25A42C7C022C0034AC0A /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		277C25A62C7C0A430034AC0A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		277C25AA2C7C17CC0034AC0A /* Web3PRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3PRC.swift; sourceTree = "<group>"; };
+		27E078B22C7EBD1000DF12C8 /* Web3Auth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Web3Auth.plist; sourceTree = "<group>"; };
 		506A735C2C79403800A62FC7 /* Wallet-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallet-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A735F2C79403800A62FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506A73612C79403800A62FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		506A73632C79403800A62FC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		506A73682C79403900A62FC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		506A736B2C79403900A62FC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		506A736D2C79403900A62FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -225,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				271BBEF92C7C31FA00E24D81 /* AuthManager.swift */,
+				27E078B22C7EBD1000DF12C8 /* Web3Auth.plist */,
 			);
 			path = Web3Auth;
 			sourceTree = "<group>";
@@ -326,9 +325,7 @@
 				506A73A22C7943EC00A62FC7 /* Utilities */,
 				506A73902C79429E00A62FC7 /* Extensions */,
 				506A738F2C79428F00A62FC7 /* Supporting Files */,
-				506A73632C79403800A62FC7 /* ViewController.swift */,
 				506A736D2C79403900A62FC7 /* Info.plist */,
-				277C25962C7BFA250034AC0A /* Web3Auth.plist */,
 			);
 			path = "Wallet-iOS";
 			sourceTree = "<group>";
@@ -646,7 +643,7 @@
 				506A74172C7AE4C200A62FC7 /* Roboto-MediumItalic.ttf in Resources */,
 				506A74192C7AE4C200A62FC7 /* Roboto-Thin.ttf in Resources */,
 				506A74102C7AE4C200A62FC7 /* Roboto-BlackItalic.ttf in Resources */,
-				277C25972C7BFA250034AC0A /* Web3Auth.plist in Resources */,
+				27E078B32C7EBD1000DF12C8 /* Web3Auth.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,7 +666,6 @@
 				506A73EE2C79522B00A62FC7 /* NFTCoordinator.swift in Sources */,
 				506A73BD2C7946A700A62FC7 /* Colors.swift in Sources */,
 				506A73D02C794CB700A62FC7 /* SideMenuViewController.swift in Sources */,
-				506A73642C79403800A62FC7 /* ViewController.swift in Sources */,
 				271BBF062C7C448400E24D81 /* ViewModelProtocol.swift in Sources */,
 				271BBF022C7C406300E24D81 /* UserDataModel.swift in Sources */,
 				2717BAE92C7D6B6300415E32 /* Notification+Extension.swift in Sources */,
