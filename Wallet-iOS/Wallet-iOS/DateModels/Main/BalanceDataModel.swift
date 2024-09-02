@@ -19,7 +19,6 @@ protocol BalanceDataModelProtocol {
     func fetchArbitrumSepolia(address: String, completion: @escaping (Double) -> Void)
     func fetchOptimismMainnet(address: String, completion: @escaping (Double) -> Void)
     func fetchOptimismSepolia(address: String, completion: @escaping (Double) -> Void)
-    func fetchNFTs(address: String, completion: @escaping ([NFT]) -> Void)
 }
 
 class BalanceDataModel: BalanceDataModelProtocol {
@@ -86,22 +85,6 @@ class BalanceDataModel: BalanceDataModelProtocol {
                 completion(balanceInEther)
             case .failure(let error):
                 print("Request failed with error: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    func fetchNFTs(address: String, completion: @escaping ([NFT]) -> Void) {
-        let nftPath = Paths.NFT
-        
-        let parameters: [String: Any] = ["owner": address]
-        let headers: HTTPHeaders = ["Content-Type": "application/json"]
-        
-        AF.request(nftPath, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseDecodable(of: NFTResponse.self) { response in
-            switch response.result {
-            case .success(let data):
-                completion(data.ownedNfts)
-            case .failure(let error):
-                print("Error: \(error)")
             }
         }
     }

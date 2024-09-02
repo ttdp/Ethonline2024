@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NFTViewController: BaseViewController<NFTViewModel>, SideMenuItemContent {
     
@@ -19,6 +20,10 @@ class NFTViewController: BaseViewController<NFTViewModel>, SideMenuItemContent {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.getNFTs(for: testAddress) {
+            self.tableView.reloadData()
+        }
     }
     
     lazy var tableView: NFTViewTableView = {
@@ -93,11 +98,18 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.nfts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusable(at: indexPath) as NFTViewTableCell
+        let nft = viewModel.nfts[indexPath.row]
+        
+        cell.nftLabel.text = nft.title
+        if let gateway = nft.media?.first?.gateway {
+            let url = URL(string: gateway)
+            cell.nftImage.kf.setImage(with: url)
+        }
         return cell
     }
     
@@ -130,6 +142,12 @@ class NFTViewTableCell: BaseTableViewCell {
         gradientView.animateGradient()
     }
     
+    let nftLabel: UILabel = {
+        let label = UILabel()
+        label.font = BSFont.Medium_28
+        return label
+    }()
+    
     let gradientView: GradientBorderView = {
         let view = GradientBorderView()
         view.layer.cornerRadius = 10
@@ -147,11 +165,16 @@ class NFTViewTableCell: BaseTableViewCell {
     
     override func setUpViews() {
         backgroundColor = Colors.groupedBackground_primary
+        
+        addSubview(nftLabel)
+        addConstts(format: "H:[v0]", views: nftLabel)
+        addConstts(format: "V:|[v0]", views: nftLabel)
+        nftLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
         addSubview(gradientView)
-        addConstts(format: "H:|-20-[v0]-20-|", views: gradientView)
-        let height = Screen.width - 40
-        addConstts(format: "V:|[v0(\(height))]|", views: gradientView)
+        let height = Screen.width - 120
+        addConstts(format: "H:[v0(\(height))]", views: gradientView)
+        addConstts(format: "V:|-45-[v0(\(height))]-35-|", views: gradientView)
         gradientView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         gradientView.addSubview(nftImage)

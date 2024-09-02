@@ -129,12 +129,6 @@ class BalanceViewModel: ViewModelProtocol {
         }
     }
     
-    func getNFTs(for address: String) {
-        dataModel.fetchNFTs(address: address) { nfts in
-            print("NFT: \(nfts.count)")
-        }
-    }
-    
     private func feedPrice(type: TokenType, quota: TokenQuota) {
         for (index, balance) in balances.enumerated() {
             if balance.type == type {

@@ -1,5 +1,5 @@
 //
-//  NFTModel.swift
+//  NFTResponse.swift
 //  Wallet-iOS
 //
 //  Created by TIAN TONG on 8/24/24.

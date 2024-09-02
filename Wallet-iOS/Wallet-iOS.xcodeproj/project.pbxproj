@@ -25,10 +25,12 @@
 		2726EAF72C79F3A9001ACFE2 /* Squall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF62C79F3A9001ACFE2 /* Squall.swift */; };
 		2726EAF92C79F412001ACFE2 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EAF82C79F412001ACFE2 /* Mersenne.swift */; };
 		2726EB022C7A0F27001ACFE2 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EB012C7A0F27001ACFE2 /* Paths.swift */; };
-		2726EB082C7A26A7001ACFE2 /* NFTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EB072C7A26A7001ACFE2 /* NFTModel.swift */; };
+		2726EB082C7A26A7001ACFE2 /* NFTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726EB072C7A26A7001ACFE2 /* NFTResponse.swift */; };
 		27451DC72C7BC58600768A67 /* Web3Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DC62C7BC58600768A67 /* Web3Auth */; };
 		27451DCA2C7BC67100768A67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DC92C7BC67100768A67 /* Alamofire */; };
 		27451DCF2C7BC68A00768A67 /* SwiftQRCodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 27451DCE2C7BC68A00768A67 /* SwiftQRCodeScanner */; };
+		2778ACD42C85AB8B003A74A9 /* NFTDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2778ACD32C85AB8B003A74A9 /* NFTDataModel.swift */; };
+		2778ACD72C85ADA6003A74A9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2778ACD62C85ADA6003A74A9 /* Kingfisher */; };
 		277C259D2C7C00C70034AC0A /* AuthDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C259C2C7C00C70034AC0A /* AuthDataModel.swift */; };
 		277C25A02C7C00D80034AC0A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C259F2C7C00D80034AC0A /* AuthViewModel.swift */; };
 		277C25A22C7C014F0034AC0A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C25A12C7C014F0034AC0A /* AuthViewController.swift */; };
@@ -125,7 +127,8 @@
 		2726EAF62C79F3A9001ACFE2 /* Squall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squall.swift; sourceTree = "<group>"; };
 		2726EAF82C79F412001ACFE2 /* Mersenne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mersenne.swift; sourceTree = "<group>"; };
 		2726EB012C7A0F27001ACFE2 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
-		2726EB072C7A26A7001ACFE2 /* NFTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTModel.swift; sourceTree = "<group>"; };
+		2726EB072C7A26A7001ACFE2 /* NFTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTResponse.swift; sourceTree = "<group>"; };
+		2778ACD32C85AB8B003A74A9 /* NFTDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDataModel.swift; sourceTree = "<group>"; };
 		277C259C2C7C00C70034AC0A /* AuthDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataModel.swift; sourceTree = "<group>"; };
 		277C259F2C7C00D80034AC0A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		277C25A12C7C014F0034AC0A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 				27451DCA2C7BC67100768A67 /* Alamofire in Frameworks */,
 				271BBEF02C7C18ED00E24D81 /* web3.swift in Frameworks */,
 				27451DCF2C7BC68A00768A67 /* SwiftQRCodeScanner in Frameworks */,
+				2778ACD72C85ADA6003A74A9 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +247,7 @@
 		2726EB062C7A269A001ACFE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2726EB072C7A26A7001ACFE2 /* NFTModel.swift */,
+				2726EB072C7A26A7001ACFE2 /* NFTResponse.swift */,
 				506A73F92C7AB30500A62FC7 /* AlchemyResponse.swift */,
 				506A73FF2C7AD3AF00A62FC7 /* CoinPaprikaResponse.swift */,
 			);
@@ -498,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				506A73AB2C7944D700A62FC7 /* BalanceDataModel.swift */,
+				2778ACD32C85AB8B003A74A9 /* NFTDataModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -557,6 +562,7 @@
 				27451DC92C7BC67100768A67 /* Alamofire */,
 				27451DCE2C7BC68A00768A67 /* SwiftQRCodeScanner */,
 				271BBEEF2C7C18ED00E24D81 /* web3.swift */,
+				2778ACD62C85ADA6003A74A9 /* Kingfisher */,
 			);
 			productName = "Wallet-iOS";
 			productReference = 506A735C2C79403800A62FC7 /* Wallet-iOS.app */;
@@ -613,6 +619,7 @@
 				27451DC82C7BC67100768A67 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				27451DCD2C7BC68A00768A67 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */,
 				271BBEEE2C7C18ED00E24D81 /* XCRemoteSwiftPackageReference "web3" */,
+				2778ACD52C85ADA6003A74A9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 506A735D2C79403800A62FC7 /* Products */;
 			projectDirPath = "";
@@ -700,8 +707,9 @@
 				506A74002C7AD3AF00A62FC7 /* CoinPaprikaResponse.swift in Sources */,
 				506A73982C79435700A62FC7 /* Reusable+Extension.swift in Sources */,
 				506A73AF2C7944FC00A62FC7 /* BalanceViewController.swift in Sources */,
-				2726EB082C7A26A7001ACFE2 /* NFTModel.swift in Sources */,
+				2726EB082C7A26A7001ACFE2 /* NFTResponse.swift in Sources */,
 				506A73922C7942C500A62FC7 /* UIView+Extension.swift in Sources */,
+				2778ACD42C85AB8B003A74A9 /* NFTDataModel.swift in Sources */,
 				2726EAF72C79F3A9001ACFE2 /* Squall.swift in Sources */,
 				506A73B62C7945BE00A62FC7 /* Images.swift in Sources */,
 				506A73D82C794DAA00A62FC7 /* MenuTransitioningDelegate.swift in Sources */,
@@ -1040,6 +1048,14 @@
 				minimumVersion = 1.16.0;
 			};
 		};
+		2778ACD52C85ADA6003A74A9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1062,6 +1078,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 27451DCD2C7BC68A00768A67 /* XCRemoteSwiftPackageReference "SwiftQRCodeScanner" */;
 			productName = SwiftQRCodeScanner;
+		};
+		2778ACD62C85ADA6003A74A9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2778ACD52C85ADA6003A74A9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
