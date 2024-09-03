@@ -86,6 +86,14 @@ class BalanceViewController: BaseViewController<BalanceViewModel>, SideMenuItemC
         viewModel.getOptimismSepholia(for: address) {
             self.tableView.reloadData()
         }
+        
+        viewModel.getBaseMainnet(for: address) {
+            self.tableView.reloadData()
+        }
+        
+        viewModel.getBaseSepholia(for: address) {
+            self.tableView.reloadData()
+        }
     }
     
     @objc func handleSide() {
@@ -136,7 +144,7 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
     let titleLabel: UILabel = {
         let view = UILabel()
         view.text = "Balance"
-        view.font = BSFont.Medium_28
+        view.font = Fonts.Medium_28
         view.sizeToFit()
         let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
         view.textColor = UIColor(patternImage: gradientImage)
@@ -152,7 +160,7 @@ class BalanceViewTableView: BaseTableView, UITableViewDataSource, UITableViewDel
     
     let addressLabel: UILabel = {
         let view = UILabel()
-        view.font = BSFont.label
+        view.font = Fonts.label
         view.textColor = Colors.label_secondary
         view.text = testAddress
         return view
@@ -336,34 +344,34 @@ class BalanceViewTableCell: BaseTableViewCell {
     
     let tokenName: UILabel = {
         let view = UILabel()
-        view.font = BSFont.Medium_22
+        view.font = Fonts.Medium_22
         view.textColor = Colors.label_primary
         return view
     }()
     
     let tokenPrice: UILabel = {
         let view = UILabel()
-        view.font = BSFont.label
+        view.font = Fonts.label
         view.textColor = Colors.label_secondary
         return view
     }()
     
     let tokenChange: UILabel = {
         let view = UILabel()
-        view.font = BSFont.label
+        view.font = Fonts.label
         return view
     }()
     
     let balanceValue: UILabel = {
         let view = UILabel()
-        view.font = BSFont.Medium_22
+        view.font = Fonts.Medium_22
         view.textColor = Colors.label_primary
         return view
     }()
     
     let balancePrice: UILabel = {
         let view = UILabel()
-        view.font = BSFont.label
+        view.font = Fonts.label
         view.textColor = Colors.label_secondary
         return view
     }()

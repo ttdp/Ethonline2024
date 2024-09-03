@@ -25,6 +25,7 @@ struct Images {
     static let ETH = UIImage(named: "ETH")!
     static let ARB = UIImage(named: "ARB")!
     static let OPT = UIImage(named: "OPT")!
+    static let BASE = UIImage(named: "BASE")!
     
     static let BigHugs = UIImage(named: "BigHugs")
     

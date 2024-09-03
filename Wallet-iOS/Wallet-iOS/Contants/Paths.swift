@@ -22,6 +22,9 @@ struct Paths {
     static let OptimismMainnet = "https://opt-mainnet.g.alchemy.com/v2/\(AlchemyAPIKEY)"
     static let OptimismSepolia = "https://opt-sepolia.g.alchemy.com/v2/\(AlchemyAPIKEY)"
     
+    static let BaseMainnet = "https://base-mainnet.g.alchemy.com/v2/\(AlchemyAPIKEY)"
+    static let BaseSepolia = "https://base-sepolia.g.alchemy.com/v2/\(AlchemyAPIKEY)"
+    
     static let NFT = "https://eth-mainnet.alchemyapi.io/v2/\(AlchemyAPIKEY)/getNFTsForOwner"
     
     static let EthereumPrice = "https://api.coinpaprika.com/v1/tickers/eth-ethereum"

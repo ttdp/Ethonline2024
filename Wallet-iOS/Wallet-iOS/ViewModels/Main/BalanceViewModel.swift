@@ -16,9 +16,11 @@ enum TokenType: String {
     case ethereum
     case arbitrum
     case optimism
+    case base
     case ethereumSepholia
     case arbitrumSepholia
     case optimismSepholia
+    case baseSepholia
 }
 
 struct CryptoCurrency {
@@ -53,6 +55,8 @@ class BalanceViewModel: ViewModelProtocol {
         CryptoCurrency(type: .arbitrumSepholia, name: "Arb Sepholia", icon: Images.ARB),
         CryptoCurrency(type: .optimism, name: "Optimism", icon: Images.OPT),
         CryptoCurrency(type: .optimismSepholia, name: "Opt Sepholia", icon: Images.OPT),
+        CryptoCurrency(type: .base, name: "Base", icon: Images.BASE),
+        CryptoCurrency(type: .baseSepholia, name: "Base Sepholia", icon: Images.BASE),
     ]
     
     init(dataModel: BalanceDataModelProtocol = BalanceDataModel()) {
@@ -125,6 +129,20 @@ class BalanceViewModel: ViewModelProtocol {
     func getOptimismSepholia(for address: String, completion: @escaping () -> Void) {
         dataModel.fetchOptimismSepolia(address: address) { balance in
             self.feedBalance(type: .optimismSepholia, balanceInEther: balance)
+            DispatchQueue.main.async { completion() }
+        }
+    }
+    
+    func getBaseMainnet(for address: String, completion: @escaping () -> Void) {
+        dataModel.fetchOptimismMainnet(address: address) { balance in
+            self.feedBalance(type: .base, balanceInEther: balance)
+            DispatchQueue.main.async { completion() }
+        }
+    }
+    
+    func getBaseSepholia(for address: String, completion: @escaping () -> Void) {
+        dataModel.fetchOptimismSepolia(address: address) { balance in
+            self.feedBalance(type: .baseSepholia, balanceInEther: balance)
             DispatchQueue.main.async { completion() }
         }
     }

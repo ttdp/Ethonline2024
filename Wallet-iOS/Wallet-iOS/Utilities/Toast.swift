@@ -12,11 +12,7 @@ class ToastConfig {
     static var showTime: Double = 2.0
     static var appearDuration: Double = 0.2
     static var disappearDuration: Double = 0.3
-    
-//    static var successColor: UIColor = UIColor(hex: "#4BC84F")  // #3DBE61  // #EBF7EE
-//    static var warningColor: UIColor = UIColor(hex: "#FFD454")  // #EF9404  // #FEF7EA
-//    static var errorColor: UIColor = UIColor(hex: "#E8665F")    // #D8512F  // #FCEDEA
-                                                                // #006DE6  // #E5EFFA  // Blue
+
     static var successBorderColor = UIColor(hex: "#3DBE61")
     static var warningBorderColor = UIColor(hex: "#EF9404")
     static var errorBorderColor = UIColor(hex: "#D8512F")
@@ -107,7 +103,7 @@ class Toast: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = BSFont.secondary
+        label.font = Fonts.secondary
         label.textColor = UIColor.darkGray
         return label
     }()
@@ -121,20 +117,7 @@ class Toast: UIView {
         contentView.backgroundColor = type.backgroundColor
         addConstts(format: "H:|-10-[v0(\(width - 20))]-10-|", views: contentView)
         addConstts(format: "V:|-(-44)-[v0(50)]|", views: contentView)
-        
-//        addSubview(stackView)
-//        addConstts(format: "V:|-(-44)-[v0(44)]|", views: stackView)
-//        stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-//        stackView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 20).isActive = true
-//        stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -20).isActive = true
-        
-//        iconView.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh + 1, for: .horizontal)
-//        iconView.image = type.image
-//        stackView.addArrangedSubview(iconView)
-//
-//        titleLabel.text = title
-//        stackView.addArrangedSubview(titleLabel)
-        
+    
         imageView.image = type.image
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
@@ -193,4 +176,3 @@ class Toast: UIView {
     }
     
 }
-

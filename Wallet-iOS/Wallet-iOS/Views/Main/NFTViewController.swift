@@ -70,7 +70,7 @@ class NFTViewTableView: BaseTableView, UITableViewDataSource, UITableViewDelegat
     let titleLabel: UILabel = {
         let view = UILabel()
         view.text = "NFT"
-        view.font = BSFont.Medium_28
+        view.font = Fonts.Medium_28
         view.sizeToFit()
         let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
         view.textColor = UIColor(patternImage: gradientImage)
@@ -144,7 +144,7 @@ class NFTViewTableCell: BaseTableViewCell {
     
     let nftLabel: UILabel = {
         let label = UILabel()
-        label.font = BSFont.Medium_28
+        label.font = Fonts.Medium_28
         return label
     }()
     

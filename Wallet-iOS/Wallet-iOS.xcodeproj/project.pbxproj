@@ -136,7 +136,7 @@
 		277C25A62C7C0A430034AC0A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		277C25AA2C7C17CC0034AC0A /* Web3PRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3PRC.swift; sourceTree = "<group>"; };
 		27E078B22C7EBD1000DF12C8 /* Web3Auth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Web3Auth.plist; sourceTree = "<group>"; };
-		506A735C2C79403800A62FC7 /* Wallet-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallet-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A735C2C79403800A62FC7 /* Ethereum Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ethereum Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A735F2C79403800A62FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506A73612C79403800A62FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		506A73682C79403900A62FC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 		506A735D2C79403800A62FC7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				506A735C2C79403800A62FC7 /* Wallet-iOS.app */,
+				506A735C2C79403800A62FC7 /* Ethereum Wallet.app */,
 				506A73722C79403900A62FC7 /* Wallet-iOSTests.xctest */,
 			);
 			name = Products;
@@ -565,7 +565,7 @@
 				2778ACD62C85ADA6003A74A9 /* Kingfisher */,
 			);
 			productName = "Wallet-iOS";
-			productReference = 506A735C2C79403800A62FC7 /* Wallet-iOS.app */;
+			productReference = 506A735C2C79403800A62FC7 /* Ethereum Wallet.app */;
 			productType = "com.apple.product-type.application";
 		};
 		506A73712C79403900A62FC7 /* Wallet-iOSTests */ = {
@@ -910,7 +910,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ttdp.Wallet-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Ethereum Wallet";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -938,7 +938,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ttdp.Wallet-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Ethereum Wallet";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

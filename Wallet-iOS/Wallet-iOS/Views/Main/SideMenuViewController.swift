@@ -57,7 +57,7 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     
     let appName: UILabel = {
         let view = UILabel()
-        view.font = BSFont.Bold_32
+        view.font = Fonts.Bold_32
         view.text = "Ethereum Wallet"
         view.sizeToFit()
         let gradientImage = UIImage.gradientImageWithBounds(bounds: view.bounds, colors: [Colors.gradientBlueFrom.cgColor, Colors.gradientBlueTo.cgColor], direction: .zeroToOne)
@@ -67,7 +67,7 @@ class SideTableView: BaseTableView, UITableViewDataSource, UITableViewDelegate {
     
     let verison: UILabel = {
         let view = UILabel()
-        view.font = BSFont.label
+        view.font = Fonts.label
         view.text = "Version 0.01"
         view.textColor = Colors.label_secondary
         return view
@@ -194,7 +194,7 @@ class SideTableCell: BaseTableViewCell {
  
     let itemLabel: UILabel = {
         let label = UILabel()
-        label.font = BSFont.Medium_28
+        label.font = Fonts.Medium_28
         return label
     }()
     
