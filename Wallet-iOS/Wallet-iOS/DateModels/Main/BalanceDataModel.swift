@@ -19,6 +19,8 @@ protocol BalanceDataModelProtocol {
     func fetchArbitrumSepolia(address: String, completion: @escaping (Double) -> Void)
     func fetchOptimismMainnet(address: String, completion: @escaping (Double) -> Void)
     func fetchOptimismSepolia(address: String, completion: @escaping (Double) -> Void)
+    func fetchBaseMainnet(address: String, completion: @escaping (Double) -> Void)
+    func fetchBaseSepolia(address: String, completion: @escaping (Double) -> Void)
 }
 
 class BalanceDataModel: BalanceDataModelProtocol {
@@ -72,6 +74,14 @@ class BalanceDataModel: BalanceDataModelProtocol {
     
     func fetchOptimismSepolia(address: String, completion: @escaping (Double) -> Void) {
         fetchBalance(path: Paths.OptimismSepolia, address: address, completion: completion)
+    }
+    
+    func fetchBaseMainnet(address: String, completion: @escaping (Double) -> Void) {
+        fetchBalance(path: Paths.BaseMainnet, address: address, completion: completion)
+    }
+    
+    func fetchBaseSepolia(address: String, completion: @escaping (Double) -> Void) {
+        fetchBalance(path: Paths.BaseSepolia, address: address, completion: completion)
     }
     
     private func fetchBalance(path: String, address: String, completion: @escaping (Double) -> Void) {

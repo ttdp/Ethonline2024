@@ -134,14 +134,14 @@ class BalanceViewModel: ViewModelProtocol {
     }
     
     func getBaseMainnet(for address: String, completion: @escaping () -> Void) {
-        dataModel.fetchOptimismMainnet(address: address) { balance in
+        dataModel.fetchBaseMainnet(address: address) { balance in
             self.feedBalance(type: .base, balanceInEther: balance)
             DispatchQueue.main.async { completion() }
         }
     }
     
     func getBaseSepholia(for address: String, completion: @escaping () -> Void) {
-        dataModel.fetchOptimismSepolia(address: address) { balance in
+        dataModel.fetchBaseSepolia(address: address) { balance in
             self.feedBalance(type: .baseSepholia, balanceInEther: balance)
             DispatchQueue.main.async { completion() }
         }
